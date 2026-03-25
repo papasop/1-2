@@ -331,8 +331,8 @@ The amplitude envelope is $A(x,\sigma)\sim C\cdot x^\sigma$.
   so $M=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds
   (Theorem~\ref{thm:A}).
 \item $\sigma<\tfrac{1}{2}$: $A\ll\sqrt{x}$, so $E^{(1/2)}_{\mathrm{mean}}$
-  holds trivially, but $T^{(1/2)}$ (temporal cost) is weakened
-  as the amplitude falls below the quantum-diffusion threshold.
+  holds trivially, but the amplitude falls below the quantum-diffusion
+  threshold $\sqrt{x}$; the causal structure is less constrained.
 \end{itemize}
 Hence $\sigma=\tfrac{1}{2}$ is the unique value satisfying all four
 conditions simultaneously.\qed
