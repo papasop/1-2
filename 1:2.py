@@ -77,7 +77,8 @@ def diagnostic():
 
   Background conditions (hold for ALL sigma):
     R^{1/2}: zero-cost directions exist (prime gaps give d_pi -> 0)
-    T^{1/2}: temporal cost positive in mean (prime density > 0)
+    T^{1/2}: temporal cost positive in mean
+             (explicit-formula amplitude non-zero; Remark-level, not a theorem)
     ND:      eps(x) changes sign infinitely (Littlewood 1914)
              => null set has no interior interval
 
@@ -140,7 +141,9 @@ def direction_A():
     x0 = 100000
     mr = min(abs(eps(x0+h)-eps(x0))/math.sqrt(h) for h in range(1,300))
     print(f"  R^{{1/2}}: min |Δeps|/sqrt(h) = {mr:.6f} ≈ 0 ✓")
-    print("  T^{1/2}: prime density => d_pi > 0 in mean ✓")
+    print("  T^{1/2}: d_pi does not vanish identically in mean")
+    print("           (explicit-formula amplitude ~ x^sigma/|rho| is non-zero)")
+    print("           Precise lower bound not claimed; Remark-level only.")
     print("  ND:      Littlewood 1914 => sign changes => no interior interval ✓\n")
 
 
@@ -272,7 +275,7 @@ def why_sigma_forced():
   Condition       Amplitude behaviour              Holds for all sigma?
   ──────────────────────────────────────────────────────────────────────
   R^{1/2}        Prime gaps => d_pi -> 0           Yes (universal)
-  T^{1/2}        Prime density => d_pi > 0 (mean)  Yes (universal)
+  T^{1/2}        Explicit-formula amplitude non-zero (Remark)  Yes (universal)
   ND             Littlewood sign changes            Yes (universal)
   E^{1/2}_mean   |eps| ~ x^sigma/log x;            No: only sigma=1/2
                  need sigma=1/2 for O(log x) mean
