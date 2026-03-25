@@ -172,14 +172,23 @@ Hence
 \end{proof}
 
 \begin{remark}[Background conditions under RH]
-Under RH, $R^{(1/2)}$ holds because $d_\pi(x;h)\to 0$
-for $h$ in prime-free intervals.
-$T^{(1/2)}$ holds in mean sense since the prime density gives
-$\varepsilon(x+h)-\varepsilon(x)\sim h/\log x$ on average,
-so $d_\pi\sim(\log x)^{-1/2}>0$ in mean.
+Under RH, $R^{(1/2)}$ holds because within any prime-free interval
+$(p_n, p_{n+1})$, taking $h_n\to 0^+$ with $x+h_n$ in the same interval gives
+$\varepsilon(x+h_n)-\varepsilon(x) = -(\mathrm{Li}(x+h_n)-\mathrm{Li}(x)) = O(h_n/\log x)$,
+so $d_\pi(x;h_n) = O(\sqrt{h_n}/\log x)\to 0$.
+
 $\mathrm{ND}$ holds unconditionally:
 by Littlewood (1914), $\varepsilon(x)$ changes sign infinitely often,
-so $\mathcal{N}(\varepsilon)$ has no interior interval.
+so $\mathcal{N}(\varepsilon)$ contains no interior interval.
+
+$T^{(1/2)}$ holds in the sense that $d_\pi$ does not vanish identically
+in mean: by the von~Mangoldt explicit formula, the amplitude of
+$\varepsilon(x+s)-\varepsilon(x)$ is bounded below by oscillatory
+terms of order $x^{\sigma_0}$ (where $\sigma_0=\tfrac{1}{2}$ under RH),
+so the interval mean of $d_\pi$ does not collapse to zero.
+A precise lower bound requires explicit-formula estimates and is not
+claimed here beyond the Remark level.
+
 Section~\ref{sec:unique} shows these three conditions hold for
 \emph{all} $\sigma\in(0,1)$, not just under RH.
 \end{remark}
@@ -299,12 +308,16 @@ We verify each condition's $\sigma$-dependence.
 
 \medskip
 \noindent\textbf{Background conditions (all $\sigma$):}
-$\mathrm{ND}$ is $\sigma$-independent: it follows from Littlewood
-(1914) for $\sigma=\tfrac{1}{2}$, and analogously for other $\sigma$
-via sign changes of the explicit formula.
-$R^{(1/2)}$ and $T^{(1/2)}$ also hold for all $\sigma$,
-since prime-free intervals give zero-cost directions,
-and the prime density ensures positive mean temporal cost.
+$\mathrm{ND}$ is $\sigma$-independent: by Littlewood (1914) and
+analogous sign-change results for general $\sigma$ via the explicit formula,
+$\mathcal{N}(\varepsilon)$ has no interior interval for any $\sigma$.
+$R^{(1/2)}$ holds for all $\sigma$ since prime-free intervals give
+zero-cost directions: $d_\pi(x;h_n)\to 0$ whenever $h_n\to 0^+$
+within a gap $(p_n,p_{n+1})$.
+$T^{(1/2)}$ holds for all $\sigma$ in the sense that $d_\pi$ does not
+vanish identically in mean, since the explicit-formula amplitude
+$\sim x^\sigma/|\rho|$ is non-zero; a precise lower bound is not
+claimed beyond this Remark level.
 
 \medskip
 \noindent\textbf{Selecting condition ($E^{(1/2)}_{\mathrm{mean}}$):}
