@@ -184,9 +184,8 @@ def direction_B():
         else:
             verd = "growing ❌"
         print(f"  {sigma:.2f}  {slope:>10.4f}  {sigma-0.5:>14.4f}  {verd}")
-    print("  sigma=0.5: slope≈0 (bounded); sigma>0.5: slope>0 (growing) ✓")
-    print("  Caveat: sigma=0.5 residual (0.006) is truncation artifact.")
-    print("  Rigorous boundedness: see Section 2 (Koch 1901).\n")
+    print("  sigma=0.5: slope≈0 (consistent with bounded; rigorous proof: Section 2)")
+    print("  sigma>0.5: slope>0 (growing) => E^{1/2}_mean fails ✓")
 
     # --- Theorem proof ---
     print("Theorem B proof [triangle inequality argument]:")
@@ -284,7 +283,9 @@ def why_sigma_forced():
   sigma > 1/2: amplitude ~ x^sigma >> sqrt(x) => E^{1/2}_mean broken
   sigma = 1/2: amplitude ~ sqrt(x)            => E^{1/2}_mean holds
   sigma < 1/2: amplitude << sqrt(x)           => E^{1/2}_mean trivial,
-                                                  but T^{1/2} weakened
+                                                  but amplitude below quantum-
+                                                  diffusion threshold; causal
+                                                  structure less constrained
 """)
 
     # Final table
