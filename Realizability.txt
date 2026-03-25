@@ -32,11 +32,13 @@ the displacement cost function admits a Lorentz-type Finsler causal structure.
 We then apply this framework to the prime-counting function $\pi(x)$:
 defining the cost $d_\pi(x;h) = |\varepsilon(x+h)-\varepsilon(x)|/\sqrt{xh}$
 where $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$,
-we show that the three conditions of \emph{causal existence} ($R^{(1/2)}$),
-\emph{non-collapse} ($T^{(1/2)}$),
-and \emph{light-cone sharpness} ($\mathrm{ND}$)
-together force $\sigma=\tfrac{1}{2}$ as the unique value compatible with
-$E^{(1/2)}_{\mathrm{mean}}$.
+we show that three \emph{background} conditions---causal existence ($R^{(1/2)}$),
+\emph{non-collapse} ($T^{(1/2)}$), and \emph{light-cone sharpness} ($\mathrm{ND}$)---hold
+for all values of~$\sigma$ and establish a causal structure,
+while the fourth \emph{selecting} condition
+$E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$)
+holds if and only if $\sigma=\tfrac{1}{2}$,
+thereby forcing the critical line.
 Direction~A (RH $\to$ quantum realizability) is proved rigorously.
 Direction~B (quantum realizability $\to$ RH) is established numerically
 and the remaining gap is precisely identified.
@@ -51,8 +53,9 @@ Classical approaches to the Riemann Hypothesis ask directly:
 The present work asks a different question:
 \emph{what kind of prime universe can exist}?
 
-Specifically, we impose three physical requirements on the
-prime-number distribution, interpreted as a displacement cost function:
+Specifically, we impose four conditions on the
+prime-number distribution, interpreted as a displacement cost function.
+Three are \emph{background} conditions that establish a causal structure:
 \begin{enumerate}[label=(\roman*)]
 \item \textbf{Causal existence} ($R^{(1/2)}$):
   there exists a direction along which the cost vanishes at the
@@ -63,9 +66,18 @@ prime-number distribution, interpreted as a displacement cost function:
   the null set of the cost function has no interior point;
   the causal boundary is sharp, not fuzzy.
 \end{enumerate}
-We show that these three requirements force $\sigma = \tfrac{1}{2}$
-as the unique compatible value---the critical line is not a
-coincidence but a necessity.
+The fourth condition is the \emph{selecting} condition:
+\begin{enumerate}[label=(\roman*),resume]
+\item \textbf{Mean quantum realizability} ($E^{(1/2)}_{\mathrm{mean}}$):
+  the amplitude of the error term $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$
+  scales as $\sqrt{x}$, i.e.\
+  $(1/x)\int_x^{2x}|\varepsilon(y)|y^{-1/2}\,dy = O(\log x)$.
+\end{enumerate}
+Numerically, conditions (i)--(iii) hold for \emph{all} values of~$\sigma$;
+it is condition~(iv) alone that selects $\sigma=\tfrac{1}{2}$ as the
+unique compatible value.
+The critical line is not a coincidence but a necessity imposed by
+quantum causal realizability.
 
 The key mathematical step is the decomposition
 \[
@@ -336,33 +348,39 @@ the Lindel\"of Hypothesis or GUE-level control of Dirichlet polynomials.
 \section{Why $\tfrac{1}{2}$ is Forced}
 %─────────────────────────────────────────────────────────────────
 
-The three conditions $(R^{(1/2)}, T^{(1/2)}, \mathrm{ND})$ act as
-a \emph{physical constitution} for the prime universe:
+The four conditions act as a \emph{physical constitution} for the prime universe:
 
 \medskip
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \hline
-Condition & Physical meaning & Role in forcing $\sigma$\\
+Condition & Physical meaning & Role & Selects $\sigma$?\\
 \hline
-$R^{(1/2)}$ & Causal directions exist & Null set non-empty\\
-$T^{(1/2)}$ & Universe does not collapse & Temporal cost positive\\
-ND & Light cone is sharp & No fuzzy causal boundary\\
+$R^{(1/2)}$ & Causal directions exist & Background & No (all $\sigma$)\\
+$T^{(1/2)}$ & Universe does not collapse & Background & No (all $\sigma$)\\
+ND & Light cone is sharp & Background & No (all $\sigma$, Littlewood)\\
+$E^{(1/2)}_{\mathrm{mean}}$ & Amplitude scale $=\sqrt{x}$ & \textbf{Selecting} & \textbf{Yes: only $\sigma=\tfrac{1}{2}$}\\
 \hline
 \end{tabular}
 
 \medskip
-Together these force the amplitude scale to be $\sqrt{x}$
-(quantum diffusion, $\sigma=\tfrac{1}{2}$).
-Any $\sigma>\tfrac{1}{2}$ produces super-classical amplitude growth
-($x^\sigma>\sqrt{x}$), violating $E^{(1/2)}_{\mathrm{mean}}$.
+\noindent
+The three background conditions hold for every $\sigma\in(0,1)$ and
+establish that a causal structure exists.
+The selecting condition $E^{(1/2)}_{\mathrm{mean}}$ breaks for $\sigma>\tfrac{1}{2}$
+because the amplitude envelope $A(x,\sigma)\sim x^\sigma$ exceeds $\sqrt{x}$,
+violating the $O(\log x)$ bound.
+For $\sigma<\tfrac{1}{2}$ the amplitude is too small and $T^{(1/2)}$ is weakened.
 
 \medskip
 \noindent\textbf{Contrast with classical approaches.}
-Classical methods ask \emph{where} the zeros are.
-The present framework asks \emph{what kind of prime universe can exist}.
-The answer: only a universe with $\sigma=\tfrac{1}{2}$ satisfies all three
-causal requirements simultaneously.
-$\sigma=\tfrac{1}{2}$ is not a coincidence; it is the unique fixed point
+Classical methods ask \emph{where} the zeros are (an analytic question).
+The present framework asks \emph{what kind of prime universe can exist}
+(an existence question).
+The answer: the background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
+establish causal structure for any~$\sigma$,
+but the selecting condition $E^{(1/2)}_{\mathrm{mean}}$ is satisfied
+if and only if $\sigma=\tfrac{1}{2}$.
+Thus $\sigma=\tfrac{1}{2}$ is not a coincidence; it is the unique fixed point
 of quantum causal realizability.
 
 %─────────────────────────────────────────────────────────────────
@@ -388,8 +406,13 @@ We have established:
 \end{enumerate}
 
 The main conceptual contribution is the \emph{perspective shift}:
-$\sigma=\tfrac{1}{2}$ is forced by the requirement that the prime universe
-admits a causal, non-collapsing, sharp-light-cone cost structure.
+$\sigma=\tfrac{1}{2}$ is forced not by direct analysis of zero locations,
+but by the requirement that the prime universe admits a causal,
+non-collapsing, sharp-light-cone structure satisfying
+$E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$).
+The three background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
+hold for all $\sigma$ and establish the causal framework;
+$E^{(1/2)}_{\mathrm{mean}}$ is the unique selecting condition.
 
 \begin{thebibliography}{9}
 \bibitem{Li2026R}
