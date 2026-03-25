@@ -73,11 +73,11 @@ The fourth condition is the \emph{selecting} condition:
   scales as $\sqrt{x}$, i.e.\
   $(1/x)\int_x^{2x}|\varepsilon(y)|y^{-1/2}\,dy = O(\log x)$.
 \end{enumerate}
-Numerically, conditions (i)--(iii) hold for \emph{all} values of~$\sigma$;
-it is condition~(iv) alone that selects $\sigma=\tfrac{1}{2}$ as the
-unique compatible value.
-The critical line is not a coincidence but a necessity imposed by
-quantum causal realizability.
+Numerically, conditions (i)--(iii) hold for \emph{all} values of~$\sigma$
+and establish a causal structure;
+it is condition~(iv) that selects $\sigma=\tfrac{1}{2}$ as the
+unique compatible value (see \S5--6 for proofs and numerics).
+The critical line is not a coincidence but a necessity.
 
 The key mathematical step is the decomposition
 \[
@@ -120,7 +120,13 @@ so $\mathrm{Sig}(Q)=(1,1)$ (Lorentzian).
 \section{Decomposition: $E = E' + \mathrm{ND}$}
 %─────────────────────────────────────────────────────────────────
 
+We now ask: which parts of Assumption~$E$ are strictly necessary,
+and can the framework be extended to quantum ($\tfrac{1}{2}$-H\"{o}lder) paths?
+We show that $E$ simultaneously enforces two independent properties,
+which we separate below (formal definitions in \S\ref{sub:defs}).
+
 \subsection{What Assumption E does in each proof step}
+\label{sub:steps}
 
 The original proof proceeds in five steps.
 We track precisely which property of $E$ is used:
@@ -148,6 +154,7 @@ These are independent conditions when $Q$ is replaced by a
 1-homogeneous function.
 
 \subsection{Formal definitions}
+\label{sub:defs}
 
 \begin{definition}[$E'$---quantum leading-order expansion]
 There exists a continuous, positively 1-homogeneous function
@@ -179,6 +186,12 @@ and $\delta x_n/\|\delta x_n\|\to v$ with $v_t>0$.
 %─────────────────────────────────────────────────────────────────
 \section{The Quantum Realizability Theorem}
 %─────────────────────────────────────────────────────────────────
+
+With the four conditions of \S\ref{sub:defs} in place, we can state
+the quantum analogue of Theorem~1.
+The proof follows the same five-step structure, using $E'$ for
+Steps~1--3, $\mathrm{ND}$ for Step~4, and noting that Step~5
+(Sylvester signature) does not carry over to the 1-homogeneous setting.
 
 \begin{theorem}[Quantum Realizability]
 Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, and $\mathrm{ND}$,
@@ -252,6 +265,14 @@ This confirms that $\mathrm{ND}$ is a genuinely independent assumption.
 %─────────────────────────────────────────────────────────────────
 \section{Application: Prime Universe and $\sigma=\tfrac{1}{2}$}
 %─────────────────────────────────────────────────────────────────
+
+We now instantiate the abstract framework of \S\S3--4
+in the concrete setting of prime-number theory.
+The displacement cost $d(x;\delta x)$ is replaced by the
+prime cost $d_\pi(x;h)$ defined below,
+and the abstract conditions $R^{(1/2)},E',T^{(1/2)},\mathrm{ND}$
+are translated into statements about the error term
+$\varepsilon(x):=\pi(x)-\mathrm{Li}(x)$.
 
 \subsection{The prime cost function}
 
@@ -348,7 +369,8 @@ the Lindel\"of Hypothesis or GUE-level control of Dirichlet polynomials.
 \section{Why $\tfrac{1}{2}$ is Forced}
 %─────────────────────────────────────────────────────────────────
 
-The four conditions act as a \emph{physical constitution} for the prime universe:
+The four conditions act as a \emph{physical constitution} for the prime universe.
+We summarise which conditions distinguish $\sigma$ and which do not:
 
 \medskip
 \begin{tabular}{llll}
@@ -364,24 +386,24 @@ $E^{(1/2)}_{\mathrm{mean}}$ & Amplitude scale $=\sqrt{x}$ & \textbf{Selecting} &
 
 \medskip
 \noindent
-The three background conditions hold for every $\sigma\in(0,1)$ and
-establish that a causal structure exists.
-The selecting condition $E^{(1/2)}_{\mathrm{mean}}$ breaks for $\sigma>\tfrac{1}{2}$
-because the amplitude envelope $A(x,\sigma)\sim x^\sigma$ exceeds $\sqrt{x}$,
-violating the $O(\log x)$ bound.
-For $\sigma<\tfrac{1}{2}$ the amplitude is too small and $T^{(1/2)}$ is weakened.
+\textbf{Why $E^{(1/2)}_{\mathrm{mean}}$ selects $\sigma=\tfrac{1}{2}$.}
+The amplitude envelope of the explicit formula is
+$A(x,\sigma)=2x^\sigma\sum_n|\rho_n|^{-1}$.
+\begin{itemize}
+\item $\sigma>\tfrac{1}{2}$: $A(x,\sigma)\sim x^\sigma\gg\sqrt{x}$,
+  so $M(x,\sigma)\to\infty$ and $E^{(1/2)}_{\mathrm{mean}}$ breaks.
+  Numerically, the log-log slope of $M$ equals $\sigma-\tfrac{1}{2}>0$.
+\item $\sigma=\tfrac{1}{2}$: $A(x,\tfrac{1}{2})\sim\sqrt{x}$,
+  so $M(x,\tfrac{1}{2})=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds (Section~5A).
+\item $\sigma<\tfrac{1}{2}$: amplitude is too small; $T^{(1/2)}$ is weakened.
+\end{itemize}
 
 \medskip
 \noindent\textbf{Contrast with classical approaches.}
-Classical methods ask \emph{where} the zeros are (an analytic question).
+Classical methods ask \emph{where} the zeros are (analytic question).
 The present framework asks \emph{what kind of prime universe can exist}
-(an existence question).
-The answer: the background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
-establish causal structure for any~$\sigma$,
-but the selecting condition $E^{(1/2)}_{\mathrm{mean}}$ is satisfied
-if and only if $\sigma=\tfrac{1}{2}$.
-Thus $\sigma=\tfrac{1}{2}$ is not a coincidence; it is the unique fixed point
-of quantum causal realizability.
+(existence question), and shows that $E^{(1/2)}_{\mathrm{mean}}$ uniquely
+forces $\sigma=\tfrac{1}{2}$.
 
 %─────────────────────────────────────────────────────────────────
 \section{Conclusion}
@@ -406,13 +428,13 @@ We have established:
 \end{enumerate}
 
 The main conceptual contribution is the \emph{perspective shift}:
-$\sigma=\tfrac{1}{2}$ is forced not by direct analysis of zero locations,
-but by the requirement that the prime universe admits a causal,
-non-collapsing, sharp-light-cone structure satisfying
-$E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$).
-The three background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
-hold for all $\sigma$ and establish the causal framework;
-$E^{(1/2)}_{\mathrm{mean}}$ is the unique selecting condition.
+instead of asking \emph{where} the zeros are,
+we ask \emph{what kind of prime universe can exist}.
+The answer is that $E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$)
+is the unique condition that selects $\sigma=\tfrac{1}{2}$,
+while the three background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
+hold for all $\sigma$ and provide the causal framework in which
+$E^{(1/2)}_{\mathrm{mean}}$ operates.
 
 \begin{thebibliography}{9}
 \bibitem{Li2026R}
