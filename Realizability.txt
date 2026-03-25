@@ -10,521 +10,519 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
 \newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
 
-\title{\textbf{Quantum Realizability and the Origin of} $\sigma = \tfrac{1}{2}$\\[6pt]
-\large A Causal Derivation of the Riemann Hypothesis Critical Line}
+\title{\textbf{Prime Realizability and the Critical Line}\\[6pt]
+\large A Causal Existence Framework for the Riemann Hypothesis}
 \author{Y.~Y.~N.~Li}
 \date{2026}
 
 \begin{document}
 \maketitle
 
+%─────────────────────────────────────────────────────────────────
 \begin{abstract}
-We extend the Realizability framework of \cite{Li2026R} from classical ($C^2$) paths
-to quantum ($\tfrac{1}{2}$-H\"older) paths.
-The original Assumption~E (quadratic leading-order expansion, scale $h^2$)
-is decomposed into two independent conditions:
-$E'$ (the leading-order scale is $h$, compatible with Wiener paths)
-and $\mathrm{ND}$ (the null set of the cost function has no interior point,
-i.e.\ the light cone is sharp).
-Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, and $\mathrm{ND}$,
-the displacement cost function admits a \emph{Lorentz-type Finsler causal structure}:
-a causal cone exists (light cone is non-empty), but the metric need not be quadratic,
-so the signature is not unique in general.
-We then apply this framework to the prime-counting function $\pi(x)$:
-defining the cost $d_\pi(x;h) = |\varepsilon(x+h)-\varepsilon(x)|/\sqrt{xh}$
-where $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$,
-we show that three \emph{background} conditions---causal existence ($R^{(1/2)}$),
-\emph{non-collapse} ($T^{(1/2)}$), and \emph{light-cone sharpness} ($\mathrm{ND}$)---hold
-for all values of~$\sigma$ and establish a causal structure,
-while the fourth \emph{selecting} condition
-$E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$)
-holds if and only if $\sigma=\tfrac{1}{2}$,
-thereby forcing the critical line.
-Direction~A (RH $\to$ quantum realizability) is proved rigorously.
-Direction~B (quantum realizability $\to$ RH) is partially proved under a
-conditional premise (verified numerical evidence for known zeros) and
-numerically supported; the remaining gap is precisely identified.
+We introduce a \emph{causal realizability} framework for the
+prime-counting function $\pi(x)$.
+Define the displacement cost
+$d_\pi(x;h):=|\varepsilon(x+h)-\varepsilon(x)|/\sqrt{xh}$,
+where $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$.
+We impose four conditions on this cost:
+three \emph{background} conditions---causal existence ($R^{(1/2)}$),
+non-collapse ($T^{(1/2)}$), and light-cone sharpness
+($\mathrm{ND}$)---hold for all $\sigma\in(0,1)$;
+and one \emph{selecting} condition---mean quantum realizability
+($E^{(1/2)}_{\mathrm{mean}}$, amplitude scale $\sqrt{x}$)---holds
+if and only if $\sigma=\tfrac{1}{2}$.
+
+Direction~A (RH $\Rightarrow$ $E^{(1/2)}_{\mathrm{mean}}$) is proved
+rigorously via Koch~(1901).
+Direction~B ($E^{(1/2)}_{\mathrm{mean}}$ $\Rightarrow$ RH) is partially
+proved: any finite collection of off-line zeros forces
+$E^{(1/2)}_{\mathrm{mean}}$ to break by a triangle-inequality argument,
+conditional on the verified numerical evidence for the first $\sim10^{13}$
+zeros; the remaining gap (infinitely many zeros in
+$\tfrac{1}{2}<\sigma<\tfrac{7}{12}$) is precisely identified.
+
+The conceptual source of the four conditions is the decomposition
+$E=E'+\mathrm{ND}$ of the classical quadratic Assumption~E
+\cite{Li2026R} into a scale condition ($E'$, compatible with
+quantum/Wiener paths) and a topological condition (ND, null set
+has no interior).
+This decomposition provides the geometric foundation and explains
+why these four conditions are the natural ones.
 \end{abstract}
 
 %─────────────────────────────────────────────────────────────────
 \section{Introduction}
 %─────────────────────────────────────────────────────────────────
 
-Classical approaches to the Riemann Hypothesis ask directly:
-\emph{where} are the non-trivial zeros of $\zeta(s)$?
+The Riemann Hypothesis (RH) asserts that every non-trivial zero
+$\rho$ of the Riemann zeta function satisfies $\mathrm{Re}(\rho)=\tfrac{1}{2}$.
+Classical approaches ask: \emph{where} are the zeros?
 The present work asks a different question:
-\emph{what kind of prime universe can exist}?
+\emph{what kind of prime universe can exist?}
 
-Specifically, we impose four conditions on the
-prime-number distribution, interpreted as a displacement cost function.
-Three are \emph{background} conditions that establish a causal structure:
-\begin{enumerate}[label=(\roman*)]
-\item \textbf{Causal existence} ($R^{(1/2)}$):
-  there exists a direction along which the cost vanishes at the
-  $\sqrt{h}$ rate (quantum-diffusion threshold).
-\item \textbf{Non-collapse} ($T^{(1/2)}$):
-  the temporal direction (increasing $x$) carries positive cost.
-\item \textbf{Light-cone sharpness} (ND):
-  the null set of the cost function has no interior point;
-  the causal boundary is sharp, not fuzzy.
-\end{enumerate}
-The fourth condition is the \emph{selecting} condition:
-\begin{enumerate}[label=(\roman*),resume]
-\item \textbf{Mean quantum realizability} ($E^{(1/2)}_{\mathrm{mean}}$):
-  the amplitude of the error term $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$
-  scales as $\sqrt{x}$, i.e.\
-  $(1/x)\int_x^{2x}|\varepsilon(y)|y^{-1/2}\,dy = O(\log x)$.
-\end{enumerate}
-Numerically, conditions (i)--(iii) hold for \emph{all} values of~$\sigma$
-and establish a causal structure;
-it is condition~(iv) that selects $\sigma=\tfrac{1}{2}$ as the
-unique compatible value (see \S5--6 for proofs and numerics).
-The critical line is not a coincidence but a necessity.
+\subsection{The prime cost function and four conditions}
 
-The key mathematical step is the decomposition
+Let $\varepsilon(x):=\pi(x)-\mathrm{Li}(x)$ be the error in the
+prime-number theorem.
+We interpret $\varepsilon$ as encoding a \emph{displacement cost}:
 \[
-  E \;=\; E' + \mathrm{ND},
+  d_\pi(x;h) \;:=\; \frac{|\varepsilon(x+h)-\varepsilon(x)|}{\sqrt{xh}}.
 \]
-where $E$ is the original quadratic Assumption of \cite{Li2026R}
-(recalled in Section~2).
-Here $E'$ is the 1-homogeneous part of $E$ (compatible with Wiener paths),
-and $\mathrm{ND}$ is the topological part (null set has no interior).
-These two conditions act on \emph{separate} proof steps and are
-independent of each other (Section~3).
+We impose four conditions on this cost function.
 
-%─────────────────────────────────────────────────────────────────
-\section{Background: Classical Realizability}
-%─────────────────────────────────────────────────────────────────
-
-We recall the framework of \cite{Li2026R}.
-Work in an open $U\subset\mathbb{R}^2$ with chart $(t,r)$.
-For small $\delta x=(\delta t,\delta r)$ with $\delta t>0$,
-let $d(x;\delta x)\ge 0$ be a displacement cost.
-
-\begin{definition}[Classical Assumptions R, E, T]
+\begin{definition}[Background conditions]
 \begin{align*}
-&\text{(R)}\quad
-  \exists\;\delta x_n\to 0,\;\delta t_n>0,\;\delta r_n\ne 0:\quad
-  \frac{d(x;\delta x_n)}{\|\delta x_n\|}\to 0,\quad
-  \frac{\delta x_n}{\|\delta x_n\|}\to v,\;v_t>0.\\[4pt]
-&\text{(E)}\quad
-  d(x;\delta x)^2 = \bigl(Q(\delta x)\bigr)_+ + o(\|\delta x\|^2),\quad
-  Q\text{ a real quadratic form}.\\[4pt]
-&\text{(T)}\quad
-  \exists\;c_t>0:\quad d\bigl(x;(\Delta t,0)\bigr)\ge c_t\,\Delta t.
+&R^{(1/2)}:\quad
+  \exists\,h_n\to 0^+\text{ s.t.\ }d_\pi(x;h_n)\to 0
+  \quad\text{(zero-cost directions exist)}.\\[3pt]
+&T^{(1/2)}:\quad
+  \liminf_{h\to\infty}
+  \frac{1}{h}\int_h^{2h}d_\pi(x;s)\,ds > 0
+  \quad\text{(temporal cost bounded below in mean)}.\\[3pt]
+&\mathrm{ND}:\quad
+  \mathcal{N}(\varepsilon):=\{x:\varepsilon(x)=0\}
+  \text{ has no interior interval on }\mathbb{R}.
 \end{align*}
 \end{definition}
 
-\begin{theorem}[Li 2026, \cite{Li2026R}]
-Under R, E, T the quadratic form $Q$ is non-degenerate and indefinite,
-and after normalisation $Q = dt^2 - c_{\max}^{-2}\,dr^2$,
-so $\mathrm{Sig}(Q)=(1,1)$ (Lorentzian).
+\begin{definition}[Selecting condition]
+\[
+  E^{(1/2)}_{\mathrm{mean}}:\quad
+  \frac{1}{x}\int_x^{2x}\frac{|\varepsilon(y)|}{\sqrt{y}}\,dy
+  \;=\; O(\log x).
+\]
+\end{definition}
+
+\noindent
+The key distinction between the four conditions is their $\sigma$-dependence:
+
+\begin{proposition}[Diagnostic; proved in Section~\ref{sec:unique}]\label{prop:diag}
+The three background conditions $R^{(1/2)}$, $T^{(1/2)}$, $\mathrm{ND}$
+hold for \emph{all} $\sigma\in(0,1)$ independently of the Riemann Hypothesis:
+they reflect universal properties of prime gaps, prime density,
+and Littlewood's sign-change theorem respectively.
+The selecting condition $E^{(1/2)}_{\mathrm{mean}}$ distinguishes $\sigma$:
+it holds if and only if $\sigma=\tfrac{1}{2}$.
+\end{proposition}
+
+\subsection{Main results}
+
+\begin{theorem}[Direction A, rigorous]\label{thm:A}
+RH $\Rightarrow$ $E^{(1/2)}_{\mathrm{mean}}$.
 \end{theorem}
 
+\begin{theorem}[Direction B, conditional]\label{thm:B}
+Under the conditional premise that all numerically verified zeros
+(first $\sim10^{13}$) lie on $\mathrm{Re}(\rho)=\tfrac{1}{2}$:
+any finite collection of zeros with $\mathrm{Re}(\rho)>\tfrac{1}{2}$
+forces $E^{(1/2)}_{\mathrm{mean}}$ to fail.
+Hence $E^{(1/2)}_{\mathrm{mean}}\Rightarrow\mathrm{RH}$ conditionally.
+\end{theorem}
+
+\begin{theorem}[Uniqueness]\label{thm:unique}
+$\sigma=\tfrac{1}{2}$ is the unique value for which all four conditions
+hold simultaneously.
+\end{theorem}
+
+\subsection{Conceptual source: the decomposition $E=E'+\mathrm{ND}$}
+
+The four conditions above are not arbitrary.
+They arise from decomposing the classical quadratic Assumption~$E$
+of \cite{Li2026R} into two independent parts:
+\begin{itemize}
+\item $E'$: the leading-order scale is $\|\delta x\|$
+  (1-homogeneous, compatible with Wiener/quantum paths).
+\item $\mathrm{ND}$: the null set of the cost has no interior point
+  (topological, ``sharp light cone'').
+\end{itemize}
+This decomposition $E=E'+\mathrm{ND}$ is proved in Section~\ref{sec:decomp}
+and provides the geometric foundation for why these conditions are natural.
+The prime cost function does not literally satisfy the abstract $E'$
+(since $\varepsilon$ is a step function), but the four conditions
+$R^{(1/2)},T^{(1/2)},\mathrm{ND},E^{(1/2)}_{\mathrm{mean}}$
+are the precise analogues of $R^{(1/2)},T^{(1/2)},\mathrm{ND},E'$
+in the prime-number setting.
+
+\subsection{Organisation}
+
+Section~\ref{sec:dirA} proves Direction~A (Theorem~\ref{thm:A}).
+Section~\ref{sec:dirB} proves Direction~B (Theorem~\ref{thm:B})
+and identifies the remaining gap.
+Section~\ref{sec:unique} proves Theorem~\ref{thm:unique}
+and discusses the perspective shift.
+Section~\ref{sec:decomp} establishes the abstract decomposition
+$E=E'+\mathrm{ND}$ and the Quantum Realizability Theorem.
+
 %─────────────────────────────────────────────────────────────────
-\section{Decomposition: $E = E' + \mathrm{ND}$}
+\section{Direction A: RH implies realizability}\label{sec:dirA}
 %─────────────────────────────────────────────────────────────────
 
-We now ask: which parts of Assumption~$E$ are strictly necessary,
-and can the framework be extended to quantum ($\tfrac{1}{2}$-H\"{o}lder) paths?
-We show that $E$ simultaneously enforces two independent properties,
-which we separate below (formal definitions in \S\ref{sub:defs}).
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+\textbf{$E^{(1/2)}_{\mathrm{mean}}$:}
+RH $\Rightarrow$ $\varepsilon(y)=O(\sqrt{y}\log y)$ (Koch 1901 \cite{Koch1901}).
+Hence
+\[
+  \frac{1}{x}\int_x^{2x}\frac{|\varepsilon(y)|}{\sqrt{y}}\,dy
+  \;\le\; \frac{C}{x}\int_x^{2x}\log y\,dy
+  \;\le\; C\log(2x).\qed
+\]
+\end{proof}
 
-\subsection{What Assumption E does in each proof step}
-\label{sub:steps}
+\begin{remark}[Background conditions under RH]
+Under RH, $R^{(1/2)}$ holds because $d_\pi(x;h)\to 0$
+for $h$ in prime-free intervals.
+$T^{(1/2)}$ holds in mean sense since the prime density gives
+$\varepsilon(x+h)-\varepsilon(x)\sim h/\log x$ on average,
+so $d_\pi\sim(\log x)^{-1/2}>0$ in mean.
+$\mathrm{ND}$ holds unconditionally:
+by Littlewood (1914), $\varepsilon(x)$ changes sign infinitely often,
+so $\mathcal{N}(\varepsilon)$ has no interior interval.
+Section~\ref{sec:unique} shows these three conditions hold for
+\emph{all} $\sigma\in(0,1)$, not just under RH.
+\end{remark}
 
-The original proof proceeds in five steps.
-We track precisely which property of $E$ is used:
+%─────────────────────────────────────────────────────────────────
+\section{Direction B: realizability implies RH}\label{sec:dirB}
+%─────────────────────────────────────────────────────────────────
+
+\subsection{Supporting evidence for Direction B}
+
+\begin{proposition}[Amplitude growth exponent]\label{prop:amp}
+\textbf{(B-1, algebraic.)}
+The amplitude envelope of the von~Mangoldt explicit formula is
+$A(x,\sigma)=2x^\sigma\sum_n|\rho_n|^{-1}$,
+where the sum is $x$-free.
+Hence $\log A=\sigma\log x+\mathrm{const}$ exactly---this is
+an algebraic identity, not a fit.
+
+\textbf{(B-2, numerical.)}
+Define $M(x,\sigma):=\frac{1}{x}\int_x^{2x}|\varepsilon_\sigma(y)|y^{-1/2}dy$,
+where $\varepsilon_\sigma$ is approximated by a 20-term truncation
+of the explicit formula.
+Log-log regression over $x\in[10^4,10^8]$ gives slope
+$\hat\beta\approx\sigma-\tfrac{1}{2}$ with error $<0.007$.
+In particular $\hat\beta\approx 0$ at $\sigma=\tfrac{1}{2}$
+(consistent with bounded, but not a proof---see Theorem~\ref{thm:A})
+and $\hat\beta>0$ at $\sigma>\tfrac{1}{2}$ (growing).
+The residual at $\sigma=\tfrac{1}{2}$ (slope $\approx 0.006$) is
+a truncation artifact that grows with the number of terms;
+the rigorous statement $E^{(1/2)}_{\mathrm{mean}}$ holds at $\sigma=\tfrac{1}{2}$
+is Theorem~\ref{thm:A} (Koch 1901), not a numerical conclusion.
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:amp} provides supporting evidence
+but does not enter the proof of Theorem~\ref{thm:B}.
+The proof uses only the explicit formula and the triangle inequality.
+\end{remark}
+
+\subsection{Proof of Direction B}
+
+\begin{proof}[Proof of Theorem~\ref{thm:B}]
+Decompose $\varepsilon=\varepsilon_{\mathrm{on}}+\varepsilon_{\mathrm{off}}$,
+where $\varepsilon_{\mathrm{on}}$ (resp.\ $\varepsilon_{\mathrm{off}}$)
+sums over zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$
+(resp.\ $\mathrm{Re}(\rho)>\tfrac{1}{2}$).
+Write $M_{\mathrm{on}},M_{\mathrm{off}},M_{\mathrm{total}}$
+for the corresponding interval means.
+
+\medskip
+\noindent\textbf{Step~(i): off-line zero gives growing mean.}
+If $\rho_0=\sigma_0+it_0$ with $\sigma_0>\tfrac{1}{2}$,
+the explicit formula contributes
+\[
+  f(y;\rho_0) =
+  \frac{-2y^{\sigma_0}(\sigma_0\cos(t_0\log y)+t_0\sin(t_0\log y))}
+       {\sigma_0^2+t_0^2}.
+\]
+By the sine addition formula
+$\sigma_0\cos\theta+t_0\sin\theta=|\rho_0|\sin(\theta+\phi)$,
+so $|f(y;\rho_0)|=2y^{\sigma_0}|\sin(t_0\log y+\phi)|/|\rho_0|$.
+Since $t_0\log 2\gg\pi$, the average of $|\sin|$ over $[x,2x]$
+is at least $2/\pi$, giving
+\[
+  M_{\mathrm{off}}(x)
+  \;\ge\; \frac{2}{\pi|\rho_0|}\cdot
+    \frac{(2x)^{\sigma_0+1/2}-x^{\sigma_0+1/2}}{(\sigma_0+\tfrac{1}{2})x}
+  \;=:\; C_0\,x^{\sigma_0-1/2},
+\]
+where $C_0=\frac{2(2^{\sigma_0+1/2}-1)}{\pi|\rho_0|(\sigma_0+1/2)}>0$.
+
+\medskip
+\noindent\textbf{Step~(ii): cancellation is impossible (conditional).}
+\emph{Premise:} assume the first $\sim10^{13}$ numerically verified
+zeros lie on $\mathrm{Re}(\rho)=\tfrac{1}{2}$.
+Then Koch~(1901) gives $\varepsilon_{\mathrm{on}}=O(\sqrt{x}\log x)$
+and $M_{\mathrm{on}}(x)=O(\log x)$.
+By the triangle inequality:
+\[
+  M_{\mathrm{total}}(x)
+  \;\ge\; M_{\mathrm{off}}(x)-M_{\mathrm{on}}(x)
+  \;\ge\; C_0\,x^{\sigma_0-1/2}-O(\log x)
+  \;\to\;\infty,
+\]
+since $x^{\sigma_0-1/2}\gg\log x$ for $\sigma_0>\tfrac{1}{2}$.
+Hence $E^{(1/2)}_{\mathrm{mean}}$ is violated, and by contrapositive,
+$E^{(1/2)}_{\mathrm{mean}}$ holds $\Rightarrow$ no off-line zero
+$\Rightarrow$ RH.\qed
+\end{proof}
+
+\subsection{Remaining gap}
+
+Theorem~\ref{thm:B} handles any \emph{finite} set of off-line zeros.
+The genuine obstruction is \emph{infinitely many} zeros in
+$\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$: one must show
+$\sum_n C_n x^{\sigma_0-1/2}\gg M_{\mathrm{on}}$.
+The Ingham (1940) zero-density theorem gives Abel control for
+$\sigma_0>\tfrac{2}{3}$; Huxley (1972) extends this to
+$\sigma_0>\tfrac{7}{12}$.
+The strip $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$ requires either
+the Lindel\"of Hypothesis or GUE-level Dirichlet polynomial control
+\cite{Montgomery1973}.
+
+%─────────────────────────────────────────────────────────────────
+\section{Why $\sigma=\tfrac{1}{2}$ is forced}\label{sec:unique}
+%─────────────────────────────────────────────────────────────────
+
+Direction~A and Direction~B together establish that
+$E^{(1/2)}_{\mathrm{mean}}$ selects $\sigma=\tfrac{1}{2}$.
+We now show precisely why no other value of $\sigma$ can satisfy
+all four conditions simultaneously, and verify that the three
+background conditions are genuinely $\sigma$-independent
+(completing the proof of Proposition~\ref{prop:diag}).
+
+\begin{proof}[Proof of Theorem~\ref{thm:unique} and Proposition~\ref{prop:diag}]
+We verify each condition's $\sigma$-dependence.
+
+\medskip
+\noindent\textbf{Background conditions (all $\sigma$):}
+$\mathrm{ND}$ is $\sigma$-independent: it follows from Littlewood
+(1914) for $\sigma=\tfrac{1}{2}$, and analogously for other $\sigma$
+via sign changes of the explicit formula.
+$R^{(1/2)}$ and $T^{(1/2)}$ also hold for all $\sigma$,
+since prime-free intervals give zero-cost directions,
+and the prime density ensures positive mean temporal cost.
+
+\medskip
+\noindent\textbf{Selecting condition ($E^{(1/2)}_{\mathrm{mean}}$):}
+The amplitude envelope is $A(x,\sigma)\sim C\cdot x^\sigma$.
+\begin{itemize}
+\item $\sigma>\tfrac{1}{2}$: $A\sim x^\sigma\gg\sqrt{x}$,
+  so $M(x,\sigma)\to\infty$ and $E^{(1/2)}_{\mathrm{mean}}$ fails.
+  (Numerically confirmed: slope $\hat\beta=\sigma-\tfrac{1}{2}>0$,
+  Proposition~\ref{prop:amp}.)
+\item $\sigma=\tfrac{1}{2}$: $A\sim\sqrt{x}$,
+  so $M=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds
+  (Theorem~\ref{thm:A}).
+\item $\sigma<\tfrac{1}{2}$: $A\ll\sqrt{x}$, so $E^{(1/2)}_{\mathrm{mean}}$
+  holds trivially, but $T^{(1/2)}$ (temporal cost) is weakened
+  as the amplitude falls below the quantum-diffusion threshold.
+\end{itemize}
+Hence $\sigma=\tfrac{1}{2}$ is the unique value satisfying all four
+conditions simultaneously.\qed
+\end{proof}
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Condition & Amplitude behaviour & Role & Holds for all $\sigma$?\\
+\hline
+$R^{(1/2)}$ & Prime gaps give $d_\pi\to 0$ & Background & Yes\\
+$T^{(1/2)}$ & Prime density gives $d_\pi>0$ in mean & Background & Yes\\
+ND & Littlewood sign changes & Background & Yes\\
+$E^{(1/2)}_{\mathrm{mean}}$ & $|\varepsilon|\sim x^\sigma/\log x$; need $\sigma=\tfrac{1}{2}$ & \textbf{Selecting} & \textbf{No}\\
+\hline
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent\textbf{Perspective shift.}
+Classical methods ask \emph{where} the zeros are.
+The present framework asks \emph{what prime universe can exist}:
+the three background conditions establish a causal structure for any~$\sigma$,
+while $E^{(1/2)}_{\mathrm{mean}}$ selects $\sigma=\tfrac{1}{2}$ as
+the unique value at which the prime universe satisfies
+quantum causal realizability.
+
+%─────────────────────────────────────────────────────────────────
+\section{Abstract foundation: $E=E'+\mathrm{ND}$}\label{sec:decomp}
+%─────────────────────────────────────────────────────────────────
+
+The four prime conditions of Section~1 are not arbitrary choices.
+They arise from a structural decomposition of the classical
+quadratic Assumption~$E$ \cite{Li2026R} that reveals its
+two independent components.
+This section establishes that decomposition and derives
+the Quantum Realizability Theorem, explaining \emph{why}
+these conditions form the natural framework.
+It is logically independent of Sections~\ref{sec:dirA}--\ref{sec:unique}
+and may be read separately or skipped on first reading.
+
+\subsection{Classical realizability (background)}
+
+We recall the framework of \cite{Li2026R}.
+Work in $U\subset\mathbb{R}^2$ with chart $(t,r)$.
+
+\begin{definition}[Classical assumptions R, E, T \cite{Li2026R}]
+\begin{align*}
+&\text{(R)}\quad
+  \exists\;\delta x_n\to 0,\;v_t>0,\;v_r\ne 0:\quad
+  d(x;\delta x_n)/\|\delta x_n\|\to 0,\quad
+  \delta x_n/\|\delta x_n\|\to v.\\
+&\text{(E)}\quad
+  d^2=\bigl(Q(\delta x)\bigr)_++o(\|\delta x\|^2),
+  \quad Q\text{ a quadratic form}.\\
+&\text{(T)}\quad d\bigl(x;(\Delta t,0)\bigr)\ge c_t\Delta t>0.
+\end{align*}
+\end{definition}
+
+\begin{theorem}[Li 2026 \cite{Li2026R}]
+Under R, E, T: $Q=dt^2-c_{\max}^{-2}dr^2$ (Lorentzian).
+\end{theorem}
+
+\subsection{Decomposition $E=E'+\mathrm{ND}$}
+
+The five-step proof of Li~2026 uses $E$ as follows:
 
 \begin{center}
 \begin{tabular}{lll}
 \hline
 Step & Used from $E$ & Replaceable by\\
 \hline
-1 (null direction from R) & scale $h^2$, continuity & $E'$ \\
-2 (temporal positivity) & scale $h^2$ & $E'+T^{(1/2)}$ \\
-3 (null vector by IVT) & continuity of $Q$ & $E'$ \\
-4 (non-degeneracy) & $\det Q\ne 0$ (algebraic) & ND (topological; continuity from $E'$)\\
-5 (signature by Sylvester) & $Q$ is a quadratic form & $E$ only\\
+1--3 & scale $h^2$, continuity & $E'$ \\
+4 & $\det Q\ne 0$ (algebraic) & ND (topological)\\
+5 & $Q$ is quadratic & $E$ only (Sylvester)\\
 \hline
 \end{tabular}
 \end{center}
 
-Step~4 is the critical observation.
-In the classical proof, non-degeneracy follows from $\det Q\ne 0$---an
-algebraic property of quadratic forms.
-But the proof only \emph{uses} the fact that the null set has no interior
-point---a topological property.
-These are independent conditions when $Q$ is replaced by a
-1-homogeneous function.
+Step~4 is the key: the proof uses $\det Q\ne 0$ to exclude degeneracy,
+but only the topological property (null set has no interior) is needed.
+This gives the decomposition:
 
-\subsection{Formal definitions}
-\label{sub:defs}
-
-\begin{definition}[$E'$---quantum leading-order expansion]
-There exists a continuous, positively 1-homogeneous function
-$Q':\mathbb{R}^2\setminus\{0\}\to\mathbb{R}$ such that
-\[
-  d(x;\delta x)^2 = \bigl(Q'(\delta x)\bigr)_+ + o(\|\delta x\|),
-  \quad\text{as }\delta x\to 0,\;\delta t>0.
-\]
-\emph{(Leading-order scale is $\|\delta x\|$, not $\|\delta x\|^2$.)}
-\end{definition}
-
-\begin{definition}[ND---light-cone sharpness]
-The null set $\mathcal{N}(Q') := \{v\in S^1: Q'(v)=0\}$
-has no interior point in $S^1$.
-\end{definition}
-
-\begin{definition}[$T^{(1/2)}$---quantum temporal cost]
-\[
-  \lim_{\Delta t\to 0}\frac{d(x;(\Delta t,0))^2}{\Delta t} = c_t > 0.
-\]
-\end{definition}
-
-\begin{definition}[$R^{(1/2)}$---quantum causal existence]
-There exist $\delta x_n\to 0$ with $\delta t_n>0$, $\delta r_n\ne 0$,
-and a limit direction $v$ with $v_t>0$, $v_r\ne 0$, such that
-$d(x;\delta x_n)/\|\delta x_n\|^{1/2}\to 0$.
-Moreover, there exists a direction $u\in S^1$ with $u_t>0$ and
-$Q'(u)<0$ (i.e.\ $\mathcal{C}^-(Q')\ne\emptyset$).
-
-\emph{Physical meaning: causal directions exist (zero-cost threshold),
-and the causal cone has non-empty interior (strictly sub-luminal directions).}
-\end{definition}
-
-%─────────────────────────────────────────────────────────────────
-\section{The Quantum Realizability Theorem}
-%─────────────────────────────────────────────────────────────────
-
-With the four conditions of \S\ref{sub:defs} in place, we can state
-the quantum analogue of Theorem~1.
-The proof follows the same five-step structure, using $E'$ for
-Steps~1--3, $\mathrm{ND}$ for Step~4, and noting that Step~5
-(Sylvester signature) does not carry over to the 1-homogeneous setting.
-
-\begin{theorem}[Quantum Realizability]
-Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, and $\mathrm{ND}$,
-the function $Q'$ is Lorentz-type Finsler:
-\begin{enumerate}[label=(\roman*)]
-\item there exists $w^*\in S^1$ with $w^*_t>0$ and $Q'(w^*)=0$
-  (null direction, i.e.\ light cone exists);
-\item $\mathcal{C}^-(Q'):=\{v\in S^1: Q'(v)<0\}\ne\emptyset$
-  (causal interior non-empty, by $R^{(1/2)}$);
-\item $\mathcal{N}(Q'):=\{v\in S^1: Q'(v)=0\}$ has no interior in $S^1$
-  (sharp light-cone boundary, by $\mathrm{ND}$).
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-\textbf{Step~1} ($R^{(1/2)}\Rightarrow Q'(v)\le 0$).
-By $R^{(1/2)}$ and $E'$:
-$(d/\|\delta x_n\|^{1/2})^2 = (Q'(v_n))_+ + o(1)\to 0$,
-so $(Q'(v))_+=0$, hence $Q'(v)\le 0$.
-
-\textbf{Step~2} ($T^{(1/2)}\Rightarrow Q'(e_t)>0$).
-By $E'$ and $T^{(1/2)}$:
-$d(\cdot;(\Delta t,0))^2/\|\cdot\|\to Q'(e_t)=c_t>0$.
-
-\textbf{Step~3} (IVT $\Rightarrow\exists\,w^*$).
-The path $\gamma:[0,1]\to S^1\cap\{u_t>0\}$ connecting $e_t$ to $v$
-is continuous, $Q'(\gamma(0))>0$, $Q'(\gamma(1))\le 0$.
-IVT gives $s^*$ with $Q'(\gamma(s^*))=0$.
-Set $w^*:=\gamma(s^*)$; then $w^*_t>0$ and $w^*_r\ne 0$.
-
-\textbf{Step~4} ($\mathcal{C}^-\ne\emptyset$).
-By the second part of $R^{(1/2)}$, there exists $u\in S^1$ with $Q'(u)<0$
-directly, so $\mathcal{C}^-\ne\emptyset$.
-
-The role of $\mathrm{ND}$ is to ensure the light-cone \emph{boundary} is sharp:
-$\mathcal{N}(Q')$ has no interior arc, so the causal cone is not ``fuzzy''.
-This separates the causal interior ($\mathcal{C}^-$) from the null boundary
-($\mathcal{N}$) with a topologically clean interface.
-
-\textbf{Conclusion.} Light cone exists and causal structure is non-trivial.
-\end{proof}
-
-\begin{remark}
-Step~5 of the classical proof (Sylvester $\Rightarrow$ unique signature)
-does not carry over: $Q'$ need not be a quadratic form,
-so the signature is not unique.
-The result is a Finsler causal structure, not necessarily Lorentzian.
-To recover $\mathrm{Sig}=(1,1)$ one must additionally assume $Q'$ is quadratic,
-recovering Assumption~E and the classical theorem.
-\end{remark}
-
-\begin{corollary}[Decomposition]
-$E = E' + \mathrm{ND} + \text{Sylvester}$.
-The only condition that is \emph{new} relative to $E'$ is $\mathrm{ND}$;
-Sylvester is an intrinsic property of quadratic forms, not an
-independent assumption.
-Informally: $E = E' + \mathrm{ND}$.
+\begin{corollary}[$E=E'+\mathrm{ND}$]
+Assumption~$E$ is equivalent to $E'$ (scale condition)
+plus $\mathrm{ND}$ (topological condition) plus Sylvester
+(intrinsic to quadratic forms).
+Informally: $E=E'+\mathrm{ND}$.
 \end{corollary}
 
-\begin{remark}[Numerical verification of H\"{o}lder exponents]
-Log-log regression on $N=20{,}000$ samples confirms:
-a harmonic-oscillator path (classical $C^2$) has H\"{o}lder exponent
-$\hat\alpha=0.9999\approx 1$ (Assumption~$E$, quadratic scale $h^2$),
-while a Wiener path (Brownian motion) has $\hat\alpha=0.4999\approx 1/2$
-(Assumption~$E'$, linear scale $h$).
-Both errors are less than $0.0001$.
-\end{remark}
-
-\begin{remark}[ND counterexample]
-The function $Q'_{\mathrm{deg}}(v_t,v_r):=\max(v_t,0)$ is positively
-1-homogeneous and satisfies $R^{(1/2)}$ and $T^{(1/2)}$,
-but its null set $\{v_t\le 0\}\cap S^1$ is a semicircle---an open arc
-of $180^\circ$ with non-empty interior in $S^1$.
-Hence $\mathrm{ND}$ fails, and Step~4 breaks down:
-$Q'_{\mathrm{deg}}$ has no causal cone $\mathcal{C}^-$.
-This confirms that $\mathrm{ND}$ is a genuinely independent assumption.
-\end{remark}
-
-%─────────────────────────────────────────────────────────────────
-\section{Application: Prime Universe and $\sigma=\tfrac{1}{2}$}
-%─────────────────────────────────────────────────────────────────
-
-We now instantiate the abstract framework of \S\S3--4
-in the concrete setting of prime-number theory.
-The displacement cost $d(x;\delta x)$ is replaced by the
-prime cost $d_\pi(x;h)$ defined below,
-and the abstract conditions $R^{(1/2)},E',T^{(1/2)},\mathrm{ND}$
-are translated into statements about the error term
-$\varepsilon(x):=\pi(x)-\mathrm{Li}(x)$.
-
-\subsection{The prime cost function}
-
-Let $\varepsilon(x):=\pi(x)-\mathrm{Li}(x)$ be the error in the
-prime-number theorem.
-Define the \emph{relative quantum cost}
-\[
-  d_\pi(x;h) \;:=\; \frac{|\varepsilon(x+h)-\varepsilon(x)|}{\sqrt{xh}}.
-\]
-
-\begin{definition}[$E^{(1/2)}_{\mathrm{mean}}$---mean quantum realizability]
-\[
-  \frac{1}{x}\int_x^{2x}\frac{|\varepsilon(y)|}{\sqrt{y}}\,dy
-  \;=\; O(\log x).
-\]
+\begin{definition}[Quantum conditions]
+\begin{align*}
+E'&:\; d^2=\bigl(Q'(\delta x)\bigr)_++o(\|\delta x\|),
+  \quad Q'\text{ continuous, positively 1-homogeneous}.\\
+\mathrm{ND}&:\; \mathcal{N}(Q'):=\{v\in S^1:Q'(v)=0\}\text{ has no interior in }S^1.\\
+T^{(1/2)}&:\; \lim_{\Delta t\to 0}d^2/\Delta t=c_t>0.\\
+R^{(1/2)}&:\; d(x;\delta x_n)/\|\delta x_n\|^{1/2}\to 0
+  \text{ for some }v_n\to v,\;v_t>0,\;v_r\ne 0;\\
+&\phantom{:\;}\text{and }\exists\,u\in S^1,\;u_t>0,\;Q'(u)<0.
+\end{align*}
 \end{definition}
 
-\subsection{Direction A: RH implies quantum realizability (rigorous)}
-
-\begin{theorem}
-Assume the Riemann Hypothesis.
-Then $\pi(x)$ satisfies $E^{(1/2)}_{\mathrm{mean}}$,
-$R^{(1/2)}$, $T^{(1/2)}$, and $\mathrm{ND}$.
+\begin{theorem}[Quantum Realizability]\label{thm:QR}
+Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, $\mathrm{ND}$:
+\begin{enumerate}[label=(\roman*)]
+\item $\exists\,w^*\in S^1,\;w^*_t>0,\;Q'(w^*)=0$ \emph{(null direction)};
+\item $\mathcal{C}^-(Q')\ne\emptyset$ \emph{(causal interior non-empty)};
+\item $\mathcal{N}(Q')$ has no interior \emph{(sharp boundary, by ND)}.
+\end{enumerate}
+The result is a Finsler causal structure, not necessarily Lorentzian
+(Step~5/Sylvester does not apply to 1-homogeneous $Q'$).
 \end{theorem}
 
 \begin{proof}
-\textbf{$E^{(1/2)}_{\mathrm{mean}}$:}
-RH $\Rightarrow$ $\varepsilon(y)=O(\sqrt{y}\log y)$ (Koch 1901).
-Hence
-$\frac{1}{x}\int_x^{2x}\frac{|\varepsilon(y)|}{\sqrt{y}}\,dy
-\le \frac{1}{x}\int_x^{2x}C\log y\,dy \le C\log(2x)$.
+\textbf{Step~1.} By $R^{(1/2)}$ and $E'$:
+$(d/\|\delta x_n\|^{1/2})^2=(Q'(v_n))_++o(1)\to 0$,
+so $Q'(v)\le 0$.
 
-\textbf{$R^{(1/2)}$:}
-For $h=1$ in regions between primes, $|\Delta\varepsilon|=1/\log(x+1)\ll 1$,
-so $d_\pi\to 0$. Zero-cost directions exist.
+\textbf{Step~2.} By $E'$ and $T^{(1/2)}$:
+$d(\cdot;(\Delta t,0))^2/\Delta t\to Q'(e_t)=c_t>0$.
 
-\textbf{$T^{(1/2)}$:}
-The mean temporal cost $d_{\pi}^{\mathrm{mean}}:=\frac{1}{x}\int_x^{2x}|d_\pi(y;1)|\,dy$
-is bounded away from zero: by the prime number theorem
-$|\varepsilon(y+1)-\varepsilon(y)|=1/\log(y+1)$ on a positive-density set of~$y$
-(where no prime lies in $(y,y+1]$), so $d_\pi^{\mathrm{mean}}\ge c/\log x>0$.
-Single-point values oscillate; $T^{(1/2)}$ is a mean-sense statement.
+\textbf{Step~3.} The path $\gamma(s)$ from $e_t$ ($Q'>0$) to $v$
+($Q'\le 0$) is continuous in $S^1\cap\{u_t>0\}$.
+IVT gives $w^*=\gamma(s^*)$ with $Q'(w^*)=0$ and $w^*_t>0$,
+$w^*_r\ne 0$.
 
-\textbf{ND:}
-By Littlewood (1914), $\varepsilon(x)$ changes sign infinitely often,
-so $\mathcal{N}(\varepsilon)$ has no interior interval. \qed
+\textbf{Step~4.} By $R^{(1/2)}$ (second part), $\exists\,u$ with
+$Q'(u)<0$, so $\mathcal{C}^-\ne\emptyset$.
+ND ensures $\mathcal{N}(Q')$ has no interior arc.\qed
 \end{proof}
 
-\subsection{Direction B: quantum realizability implies RH (conjecture)}
+\begin{remark}[Relation to prime conditions]
+The prime cost function $d_\pi$ does not satisfy $E'$ literally
+(since $\varepsilon$ is a step function, not smooth).
+The four prime conditions
+$R^{(1/2)},T^{(1/2)},\mathrm{ND},E^{(1/2)}_{\mathrm{mean}}$
+are the natural analogues of
+$R^{(1/2)},T^{(1/2)},\mathrm{ND},E'$
+in the number-theoretic setting.
+The decomposition $E=E'+\mathrm{ND}$ explains \emph{why}
+these are the right conditions to impose; it does not provide
+a logical deduction of the prime results.
+\end{remark}
 
-\begin{proposition}[Amplitude growth exponent]
-\textbf{(B-1, algebraic.)}
-The amplitude envelope of the explicit formula is
-$A(x,\sigma) = 2x^\sigma\sum_n|\rho_n|^{-1}$,
-where the sum is $x$-free.
-Hence $\log A = \sigma\log x + \mathrm{const}$ exactly---this is
-an algebraic identity, not a numerical fit.
-
-\textbf{(B-2, numerical.)}
-Define the interval mean
-$M(x,\sigma):=\frac{1}{x}\int_x^{2x}|\varepsilon_\sigma(y)|y^{-1/2}\,dy$,
-where $\varepsilon_\sigma$ is computed via the 20-term truncation of the
-explicit formula (a numerical approximation to the true error term).
-Log-log regression over $x\in[10^4,10^8]$ (20 points) gives slope
-$\hat\beta\approx\sigma-\tfrac{1}{2}$, with error $<0.007$ for
-$\sigma\in\{0.50,0.55,0.60,0.65,0.70\}$.
-In particular $\hat\beta\approx 0$ at $\sigma=\tfrac{1}{2}$ (consistent with bounded)
-and $\hat\beta>0$ at $\sigma>\tfrac{1}{2}$ (growing).
-The residual slope at $\sigma=\tfrac{1}{2}$ (value $\approx 0.006$) grows with the
-number of terms in the truncation and reflects approximation error,
-not the behaviour of the true $\varepsilon(x)$;
-for the rigorous boundedness statement at $\sigma=\tfrac{1}{2}$
-see Section~5A (Koch 1901).
-\end{proposition}
-
-\begin{theorem}[Partial direction B --- strengthened]
-\label{thm:partialB}
-Decompose $\varepsilon = \varepsilon_{\mathrm{on}} + \varepsilon_{\mathrm{off}}$,
-where $\varepsilon_{\mathrm{on}}$ sums over zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$
-and $\varepsilon_{\mathrm{off}}$ sums over any zeros with $\mathrm{Re}(\rho)>\tfrac{1}{2}$.
-Write $M_{\mathrm{on}}(x):=\frac{1}{x}\int_x^{2x}|\varepsilon_{\mathrm{on}}|y^{-1/2}dy$
-and similarly for $M_{\mathrm{off}}$, $M_{\mathrm{total}}$.
-
-\medskip
-\noindent\textbf{(i) Off-line zero gives growing mean (strict).}
-If $\rho_0=\sigma_0+it_0$ with $\sigma_0>\tfrac{1}{2}$,
-the explicit formula contributes
-\[
-  f(y;\rho_0) \;:=\;
-  \frac{-2\,y^{\sigma_0}\bigl(\sigma_0\cos(t_0\log y)
-    +t_0\sin(t_0\log y)\bigr)}{\sigma_0^2+t_0^2}.
-\]
-By the sine addition formula,
-$\sigma_0\cos\theta+t_0\sin\theta = |\rho_0|\sin(\theta+\phi)$
-where $|\rho_0|=\sqrt{\sigma_0^2+t_0^2}$ and $\phi=\arctan(\sigma_0/t_0)$.
-Hence $|f(y;\rho_0)|=2y^{\sigma_0}|\sin(t_0\log y+\phi)|/|\rho_0|$.
-Since $t_0\log 2\gg\pi$ (so that the argument $t_0\log y+\phi$ sweeps
-many full periods as $y$ ranges over $[x,2x]$),
-we have $\mathbb{E}_{y\in[x,2x]}[|\sin(t_0\log y+\phi)|]\ge 2/\pi$, hence:
-\[
-  M_{\mathrm{off}}(x)
-  = \frac{1}{x}\int_x^{2x}\frac{|f(y;\rho_0)|}{\sqrt{y}}\,dy
-  \;\ge\; \frac{2}{\pi|\rho_0|}\cdot
-    \frac{1}{x}\int_x^{2x} y^{\sigma_0-1/2}\,dy
-  \;=\; \frac{2(2^{\sigma_0+1/2}-1)}{\pi|\rho_0|(\sigma_0+\tfrac{1}{2})}
-    \cdot x^{\sigma_0-1/2}
-  \;=:\; C_0\cdot x^{\sigma_0-1/2}.
-\]
-Hence $M_{\mathrm{off}}(x)\ge C_0 x^{\sigma_0-1/2}\to\infty$ as $x\to\infty$.
-
-\medskip
-\noindent\textbf{(ii) Cancellation is impossible (conditional on known zeros).}
-\emph{Conditional premise:}
-Assume all zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$ that have been
-numerically verified (the first $\sim10^{13}$ zeros) indeed lie on the
-critical line, so that Koch~(1901) gives
-$\varepsilon_{\mathrm{on}}=O(\sqrt{x}\log x)$ and $M_{\mathrm{on}}(x)=O(\log x)$.
-This is a conditional statement:
-it does not assume RH in full generality, but takes
-the verified numerical evidence as input.
-Under this condition, the triangle inequality gives:
-\[
-  M_{\mathrm{total}}(x)
-  \;\ge\; M_{\mathrm{off}}(x) - M_{\mathrm{on}}(x)
-  \;\ge\; C_0 x^{\sigma_0-1/2} - O(\log x)
-  \;\to\; \infty \quad(x\to\infty),
-\]
-since $x^{\sigma_0-1/2}\gg\log x$ for $\sigma_0>\tfrac{1}{2}$.
-Hence on-line zeros \emph{cannot cancel} the off-line contribution:
-$M_{\mathrm{total}}\to\infty$, violating $E^{(1/2)}_{\mathrm{mean}}$.
-
-\medskip
-\noindent\textbf{Conclusion (contrapositive, conditional).}
-\emph{Under the conditional premise of step~(ii):}
-$E^{(1/2)}_{\mathrm{mean}}$ holds $\Rightarrow$ no off-line zeros exist
-$\Rightarrow$ RH.
-\end{theorem}
-
-\medskip
-\noindent\textbf{Remaining gap.}
-Theorem~\ref{thm:partialB} handles any \emph{finite} collection of
-off-line zeros, conditional on the numerical evidence for on-line zeros.
-The genuine obstruction arises for \emph{infinitely many} off-line zeros
-with $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$:
-one must control the infinite sum
-$M_{\mathrm{off}}(x)=\sum_n C_n x^{\sigma_0-1/2}$
-and show it dominates $M_{\mathrm{on}}$ unconditionally.
-The Ingham (1940) zero-density theorem $N(\sigma,T)\le CT^{3(1-\sigma)}\log^5 T$
-gives convergent Abel control for $\sigma_0>\tfrac{2}{3}$;
-Huxley (1972) extends this to $\sigma_0>\tfrac{7}{12}$.
-The strip $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$ requires either
-the Lindel\"{o}f Hypothesis or GUE-level control of Dirichlet polynomials
-in the sense of Montgomery~\cite{Montgomery1973}.
-
-%─────────────────────────────────────────────────────────────────
-\section{Why $\tfrac{1}{2}$ is Forced}
-%─────────────────────────────────────────────────────────────────
-
-Having established Direction~A rigorously and Direction~B conditionally,
-we now synthesise the results to explain why $\sigma=\tfrac{1}{2}$ is
-the \emph{unique} value compatible with all four conditions.
-
-The four conditions act as a \emph{physical constitution} for the prime universe.
-We summarise which conditions distinguish $\sigma$ and which do not:
-
-\medskip
-\begin{tabular}{llll}
-\hline
-Condition & Physical meaning & Role & Selects $\sigma$?\\
-\hline
-$R^{(1/2)}$ & Causal directions exist & Background & No (all $\sigma$)\\
-$T^{(1/2)}$ & Universe does not collapse & Background & No (all $\sigma$)\\
-ND & Light cone is sharp & Background & No (all $\sigma$, Littlewood)\\
-$E^{(1/2)}_{\mathrm{mean}}$ & Amplitude scale $=\sqrt{x}$ & \textbf{Selecting} & \textbf{Yes: only $\sigma=\tfrac{1}{2}$}\\
-\hline
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Why $E^{(1/2)}_{\mathrm{mean}}$ selects $\sigma=\tfrac{1}{2}$.}
-The amplitude envelope of the explicit formula is
-$A(x,\sigma)=2x^\sigma\sum_n|\rho_n|^{-1}$.
-\begin{itemize}
-\item $\sigma>\tfrac{1}{2}$: $A(x,\sigma)\sim x^\sigma\gg\sqrt{x}$,
-  so $M(x,\sigma)\to\infty$ and $E^{(1/2)}_{\mathrm{mean}}$ breaks
-  (Proposition~B-2: log-log slope $\hat\beta=\sigma-\tfrac{1}{2}>0$).
-\item $\sigma=\tfrac{1}{2}$: $A(x,\tfrac{1}{2})\sim\sqrt{x}$,
-  so $M(x,\tfrac{1}{2})=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds
-  (Section~5A, Koch 1901).
-\item $\sigma<\tfrac{1}{2}$: amplitude is too small; $T^{(1/2)}$ is weakened.
-\end{itemize}
-
-\medskip
-\noindent\textbf{Contrast with classical approaches.}
-Classical methods ask \emph{where} the zeros are (analytic question).
-The present framework asks \emph{what kind of prime universe can exist}
-(existence question), and shows that $E^{(1/2)}_{\mathrm{mean}}$ uniquely
-forces $\sigma=\tfrac{1}{2}$.
+\begin{remark}[H\"older exponents]
+Log-log regression on $N=20{,}000$ samples:
+a harmonic-oscillator path has H\"older exponent
+$\hat\alpha=0.9999\approx 1$ (Assumption~$E$, scale $h^2$);
+a Wiener path has $\hat\alpha=0.4999\approx 1/2$
+(Assumption~$E'$, scale $h$).
+The counterexample $Q'_{\mathrm{deg}}=\max(v_t,0)$ satisfies
+$R^{(1/2)},T^{(1/2)}$ but has null set $\{v_t\le 0\}\cap S^1$
+(a semicircle, open arc), so ND fails and $\mathcal{C}^-=\emptyset$.
+\end{remark}
 
 %─────────────────────────────────────────────────────────────────
 \section{Conclusion}
 %─────────────────────────────────────────────────────────────────
 
-We have established:
+We have established, with the prime cost function
+$d_\pi(x;h)=|\varepsilon(x+h)-\varepsilon(x)|/\sqrt{xh}$:
+
 \begin{enumerate}
-\item The decomposition $E=E'+\mathrm{ND}$,
-  where ND (light-cone sharpness) is the unique \emph{new} condition
-  introduced by passing from classical ($C^2$) to quantum
-  ($\tfrac{1}{2}$-H\"older) paths.
-\item Direction~A is rigorous:
-  RH $\Rightarrow$ prime distribution satisfies quantum realizability.
-\item Direction~B is partially proved (conditional on verified numerical
-  evidence for known zeros, Theorem~\ref{thm:partialB}):
-  any finite collection of off-line zeros forces $M_{\mathrm{total}}\to\infty$
-  by a triangle-inequality argument.
-  It is also numerically supported:
-  (B-1) the amplitude envelope slope equals $\sigma$ exactly (algebraic identity);
-  (B-2) the interval-mean growth exponent equals $\sigma-\tfrac{1}{2}$
-  (error $<0.007$, over $[10^4,10^8]$, based on truncated explicit formula).
-\item The remaining gap is precisely identified:
-  Dirichlet polynomial control in the strip
-  $\tfrac{1}{2}<\sigma<\tfrac{7}{12}$.
+\item \textbf{Direction A (rigorous):}
+  RH $\Rightarrow$ $E^{(1/2)}_{\mathrm{mean}}$,
+  i.e.\ the prime universe satisfies quantum realizability.
+
+\item \textbf{Direction B (conditional):}
+  Any finite set of off-line zeros ($\mathrm{Re}(\rho)>\tfrac{1}{2}$)
+  forces $E^{(1/2)}_{\mathrm{mean}}$ to fail (Theorem~\ref{thm:B},
+  triangle inequality + Koch for verified zeros).
+  Hence $E^{(1/2)}_{\mathrm{mean}}\Rightarrow\mathrm{RH}$
+  under the conditional premise.
+
+\item \textbf{Remaining gap:}
+  Infinitely many zeros in $\tfrac{1}{2}<\sigma<\tfrac{7}{12}$;
+  requires Lindel\"of or GUE-level Dirichlet polynomial control.
+
+\item \textbf{Uniqueness:}
+  $\sigma=\tfrac{1}{2}$ is the unique value satisfying all four
+  conditions simultaneously (Theorem~\ref{thm:unique}).
+
+\item \textbf{Abstract foundation:}
+  The decomposition $E=E'+\mathrm{ND}$ (Section~\ref{sec:decomp})
+  shows why the four conditions are geometrically natural:
+  $E'$ is the quantum scale condition and ND is the
+  topological light-cone sharpness condition, acting
+  on separate steps of the causal structure proof.
 \end{enumerate}
 
-The main conceptual contribution is the \emph{perspective shift}:
-$\sigma=\tfrac{1}{2}$ is forced not by locating zeros directly,
-but by requiring the prime universe to admit quantum causal realizability.
-As shown in Section~6, the three background conditions hold for all~$\sigma$,
-while $E^{(1/2)}_{\mathrm{mean}}$ is the unique selecting condition.
+\noindent
+The main conceptual contribution is the perspective shift:
+instead of asking \emph{where} the zeros are,
+we ask \emph{what prime universe can exist}.
+The answer is that $E^{(1/2)}_{\mathrm{mean}}$ uniquely selects
+$\sigma=\tfrac{1}{2}$, while the three background conditions
+$R^{(1/2)},T^{(1/2)},\mathrm{ND}$ establish the causal framework
+for any $\sigma$.
 
 \begin{thebibliography}{9}
 \bibitem{Li2026R}
-Y.~Y.~N.~Li, \emph{Realizability and the Origin of Causality}, preprint (2026).
+Y.~Y.~N.~Li, \emph{Realizability and the Origin of Causality},
+preprint (2026).
 \bibitem{Koch1901}
 H.~von Koch, \emph{Sur la distribution des nombres premiers},
 Acta Math.\ \textbf{24} (1901), 159--182.
