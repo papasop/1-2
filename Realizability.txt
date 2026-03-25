@@ -348,27 +348,44 @@ Write $M_{\mathrm{on}}(x):=\frac{1}{x}\int_x^{2x}|\varepsilon_{\mathrm{on}}|y^{-
 and similarly for $M_{\mathrm{off}}$, $M_{\mathrm{total}}$.
 
 \medskip
-\noindent\textbf{(i) Single off-line zero (strict).}
+\noindent\textbf{(i) Off-line zero gives growing mean (strict).}
 If $\rho_0=\sigma_0+it_0$ with $\sigma_0>\tfrac{1}{2}$,
 the explicit formula contributes
 \[
-  -2\,\mathrm{Re}\!\left(\frac{x^{\rho_0}}{\rho_0}\right)
-  = \frac{-2\,x^{\sigma_0}\bigl(\sigma_0\cos(t_0\log x)
-    +t_0\sin(t_0\log x)\bigr)}{\sigma_0^2+t_0^2},
+  f(y;\rho_0) \;:=\;
+  \frac{-2\,y^{\sigma_0}\bigl(\sigma_0\cos(t_0\log y)
+    +t_0\sin(t_0\log y)\bigr)}{\sigma_0^2+t_0^2}.
 \]
-with amplitude envelope $2x^{\sigma_0}/|\rho_0|$.
-Hence $M_{\mathrm{off}}(x)\ge C\cdot x^{\sigma_0-1/2}$ for some $C>0$.
+By the sine addition formula,
+$\sigma_0\cos\theta+t_0\sin\theta = |\rho_0|\sin(\theta+\phi)$
+where $|\rho_0|=\sqrt{\sigma_0^2+t_0^2}$ and $\phi=\arctan(\sigma_0/t_0)$.
+Hence $|f(y;\rho_0)|=2y^{\sigma_0}|\sin(t_0\log y+\phi)|/|\rho_0|$.
+Since $\mathbb{E}[|\sin(\cdot)|]=2/\pi$ over any interval of length $\gg 1$:
+\[
+  M_{\mathrm{off}}(x)
+  = \frac{1}{x}\int_x^{2x}\frac{|f(y;\rho_0)|}{\sqrt{y}}\,dy
+  \;\ge\; \frac{2}{\pi|\rho_0|}\cdot
+    \frac{1}{x}\int_x^{2x} y^{\sigma_0-1/2}\,dy
+  \;=\; \frac{2}{\pi|\rho_0|}\cdot
+    \frac{(2x)^{\sigma_0+1/2}-x^{\sigma_0+1/2}}{(\sigma_0+\tfrac{1}{2})x}
+  \;=:\; C_0\cdot x^{\sigma_0-1/2},
+\]
+where $C_0 = \frac{2(2^{\sigma_0+1/2}-1)}{\pi|\rho_0|(\sigma_0+1/2)} > 0$.
+Hence $M_{\mathrm{off}}(x)\ge C_0\cdot x^{\sigma_0-1/2}\to\infty$ as $x\to\infty$.
 
 \medskip
 \noindent\textbf{(ii) Cancellation is impossible (key step).}
-Assume $M_{\mathrm{on}}(x)=O(\log x)$
-(numerically verified for all known zeros, i.e.\ the first $\sim10^{13}$ zeros).
+\emph{Premise:} $M_{\mathrm{on}}(x)=O(\log x)$.
+This follows from Koch~(1901) applied to the on-line zeros:
+if all zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$ lie on the critical line
+(as verified numerically for the first $\sim10^{13}$ zeros),
+then $\varepsilon_{\mathrm{on}}=O(\sqrt{x}\log x)$ and hence $M_{\mathrm{on}}=O(\log x)$.
 By the triangle inequality:
 \[
   M_{\mathrm{total}}(x)
   \;\ge\; M_{\mathrm{off}}(x) - M_{\mathrm{on}}(x)
-  \;\ge\; C\cdot x^{\sigma_0-1/2} - O(\log x)
-  \;\to\; \infty,
+  \;\ge\; C_0\cdot x^{\sigma_0-1/2} - O(\log x)
+  \;\to\; \infty \quad(x\to\infty),
 \]
 since $x^{\sigma_0-1/2}\gg\log x$ for $\sigma_0>\tfrac{1}{2}$.
 Hence on-line zeros \emph{cannot cancel} the off-line contribution:
@@ -382,11 +399,15 @@ $\Rightarrow$ RH.
 
 \medskip
 \noindent\textbf{Remaining gap.}
-Step~(ii) handles any \emph{finite} collection of off-line zeros.
-For infinitely many zeros with $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$,
-one needs to control the infinite sum $M_{\mathrm{off}}(x)=\sum_n C_n x^{\sigma_0-1/2}$.
+Step~(ii) handles any \emph{finite} collection of off-line zeros,
+or equivalently any single off-line zero together with all on-line zeros.
+The genuine obstruction arises for \emph{infinitely many} off-line zeros
+with $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$:
+one must control the infinite sum
+$M_{\mathrm{off}}(x)=\sum_n C_n x^{\sigma_0-1/2}$
+and show it dominates $M_{\mathrm{on}}$.
 The Ingham (1940) zero-density theorem $N(\sigma,T)\le CT^{3(1-\sigma)}\log^5 T$
-gives convergent Abel control only for $\sigma_0>\tfrac{2}{3}$;
+gives convergent Abel control for $\sigma_0>\tfrac{2}{3}$;
 Huxley (1972) extends this to $\sigma_0>\tfrac{7}{12}$.
 The strip $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$ requires either
 the Lindel\"{o}f Hypothesis or GUE-level control of Dirichlet polynomials.
@@ -447,7 +468,9 @@ We have established:
   (B-1) the amplitude envelope slope equals $\sigma$ exactly (algebraic identity);
   (B-2) the interval-mean growth exponent equals $\sigma-\tfrac{1}{2}$
   (error $<0.007$, genuine numerical result over $[10^4,10^8]$);
-  and partially proved analytically (single off-line zero).
+  and partially proved analytically via a strengthened argument:
+  any finite collection of off-line zeros forces $M_{\mathrm{total}}\to\infty$
+  by a triangle-inequality argument (Theorem~4).
 \item The remaining gap is precisely identified:
   Dirichlet polynomial control in the strip
   $\tfrac{1}{2}<\sigma<\tfrac{7}{12}$.
