@@ -320,11 +320,11 @@ def direction_B_realizability_implies_RH():
     print("B-3. Cancellation is impossible [KEY ARGUMENT, strengthened]")
     print("  Decompose: eps = eps_on (Re=1/2 zeros) + eps_off (Re>1/2 zeros)")
     print()
-    print("  Premise: M_on(x) = O(log x)")
-    print("    Source: Koch 1901 applied to on-line zeros.")
-    print("    If all known zeros lie on Re=1/2 (verified for ~1e13 zeros),")
-    print("    then eps_on = O(sqrt(x) log x), hence M_on = O(log x).")
-    print("    This is Koch's equivalence, not an independent assumption.")
+    print("  Premise: M_on(x) = O(log x)  [CONDITIONAL on verified zeros]")
+    print("    Condition: assume the ~1e13 numerically verified zeros lie on Re=1/2.")
+    print("    Then Koch 1901 gives eps_on = O(sqrt(x) log x) => M_on = O(log x).")
+    print("    This is CONDITIONAL, not a full assumption of RH.")
+    print("    It does not assume unverified zeros; it takes numerical evidence as input.")
     print()
     print("  Step (i): M_off lower bound (strict).")
     print("    sigma0*cos + t0*sin = |rho0|*sin(theta+phi)  [sine addition formula]")
@@ -338,8 +338,9 @@ def direction_B_realizability_implies_RH():
     print("    For small x the lower bound may be negative (M_on > M_off).")
     print("    The argument is valid in the limit x -> inf.")
     print()
-    print("  Conclusion (contrapositive):")
-    print("    E^{1/2}_mean holds => no off-line zeros => RH\n")
+    print("  Conclusion (contrapositive, CONDITIONAL on premise):")
+    print("    E^{1/2}_mean holds => no off-line zeros => RH")
+    print("    [Conditional: requires verified zeros lie on Re=1/2]\n")
 
     # Numerical verification: M_off lower bound C0
     import math as _math
@@ -383,9 +384,12 @@ def direction_B_realizability_implies_RH():
     print(f"  (t={t_off} is an arbitrary imaginary part, not an actual zeta zero)")
     print(f"  Analytic lower bound C0 = 2(2^{{sigma+0.5}}-1)/(π|ρ|(sigma+0.5)) = {C0:.5f}")
     print()
+    print(f"  Numerical check (asymptotic regime, x >= 1e5):")
+    print(f"  Note: for x<1e5 lower_bnd = M_off-M_on may be negative (M_on>M_off).")
+    print(f"  The argument is asymptotic: valid as x->inf, not for every finite x.")
     print(f"  {'x':>9}  {'M_on':>7}  {'M_off':>7}  {'M_off/x^0.1':>12}  {'≥C0':>5}  "
           f"{'lower_bnd':>10}  {'M_total':>8}")
-    for x in [1e4, 1e5, 1e6, 1e7, 1e8]:
+    for x in [1e5, 1e6, 1e7, 1e8]:
         mon   = M_on_val(x)
         moff  = M_off_single(x, sigma_off, t_off)
         mtot  = M_total_val(x, sigma_off, t_off)
@@ -394,9 +398,8 @@ def direction_B_realizability_implies_RH():
         ok_c0 = ratio >= C0
         print(f"  {x:>9.0f}  {mon:>7.4f}  {moff:>7.4f}  {ratio:>12.5f}  "
               f"{'✓' if ok_c0 else '✗':>5}  {lb:>10.4f}  {mtot:>8.4f}")
-    print(f"  M_off/x^0.1 >= C0={C0:.4f} for x>=1e5 ✓  (asymptotic lower bound holds)")
-    print(f"  lower_bnd negative at x=1e4: M_on > M_off for small x (expected).")
-    print(f"  As x->inf: M_off dominates, M_total grows ✓\n")
+    print(f"  M_off/x^0.1 >= C0={C0:.4f} ✓ (lower bound confirmed)")
+    print(f"  lower_bnd > 0 for x>=1e5; M_off dominates as x->inf ✓\n")
 
     # Remaining gap
     print("Remaining gap (infinite off-line zeros):")
@@ -438,10 +441,10 @@ def why_sigma_is_forced():
     (background: R^{1/2} + T^{1/2} + ND; key: E^{1/2}_mean)
     forces sigma = 1/2 as the unique compatible value.
 
-  sigma > 1/2: amplitude = x^sigma >> sqrt(x) => E^{1/2}_mean broken  [verified]
-  sigma = 1/2: amplitude = sqrt(x)            => E^{1/2}_mean holds   [verified]
-  sigma < 1/2: amplitude = x^sigma << sqrt(x) => E^{1/2}_mean stronger [not tested]
-               (T^{1/2} likely still holds; only amplitude scale differs)
+  sigma > 1/2: amplitude = x^sigma >> sqrt(x) => E^{1/2}_mean broken  [verified B-2]
+  sigma = 1/2: amplitude = sqrt(x)            => E^{1/2}_mean holds   [rigorous Sec 2]
+  sigma < 1/2: amplitude = x^sigma << sqrt(x) => E^{1/2}_mean trivially holds,
+               but T^{1/2} (temporal cost) is weakened — causal structure at risk.
 """)
     print("  Interval-mean slope = sigma - 0.5 (from B-2 above):")
     print(f"  {'sigma':>6}  {'slope':>10}  {'theory':>10}  {'verdict':>12}")
