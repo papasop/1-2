@@ -222,12 +222,25 @@ is continuous, $Q'(\gamma(0))>0$, $Q'(\gamma(1))\le 0$.
 IVT gives $s^*$ with $Q'(\gamma(s^*))=0$.
 Set $w^*:=\gamma(s^*)$; then $w^*_t>0$ and $w^*_r\ne 0$.
 
-\textbf{Step~4} (ND $\Rightarrow$ no fuzzy light cone).
-By ND, $w^*$ is an isolated zero of $Q'|_{S^1}$.
-Since $Q'$ is continuous and $w^*$ is isolated,
-$Q'$ changes sign across $w^*$.
-Because $Q'(e_t)>0$ on one side, $Q'<0$ on the other,
-so $\mathcal{C}^-\ne\emptyset$.
+\textbf{Step~4} ($\mathcal{C}^-\ne\emptyset$).
+We show there exists $u\in S^1$ with $Q'(u)<0$.
+
+\emph{Case~A: $Q'(v)<0$.}
+Then $v\in\mathcal{C}^-$ directly, so $\mathcal{C}^-\ne\emptyset$.
+
+\emph{Case~B: $Q'(v)=0$.}
+Let $s^*=\min\{s\in[0,1]:Q'(\gamma(s))=0\}$ be the first zero along $\gamma$.
+By definition of $s^*$, $Q'(\gamma(s))>0$ for all $s<s^*$,
+and $w^*:=\gamma(s^*)$ satisfies $Q'(w^*)=0$.
+Now consider the remaining path $\gamma|_{[s^*,1]}$ from $w^*$ to $v$,
+both in $\mathcal{N}(Q')$.
+If $Q'(\gamma(s))\ge 0$ for all $s\in[s^*,1]$,
+then $\mathcal{N}(Q')\supset\gamma([s^*,1])$.
+Since $\gamma$ is injective and $[s^*,1]$ has positive length,
+$\gamma([s^*,1])$ is an arc in $S^1$ with non-empty interior,
+contradicting $\mathrm{ND}$.
+Hence there exists $s^{**}\in(s^*,1]$ with $Q'(\gamma(s^{**}))<0$,
+so $\gamma(s^{**})\in\mathcal{C}^-$ and $\mathcal{C}^-\ne\emptyset$.
 
 \textbf{Conclusion.} Light cone exists and causal structure is non-trivial.
 \end{proof}
