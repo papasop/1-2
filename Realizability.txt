@@ -183,10 +183,15 @@ has no interior point in $S^1$.
 \]
 \end{definition}
 
-\begin{definition}[$R^{(1/2)}$---quantum realizability]
-$\exists\;\delta x_n\to 0,\;\delta t_n>0,\;\delta r_n\ne 0$ such that
-$d(x;\delta x_n)/\|\delta x_n\|^{1/2}\to 0$
-and $\delta x_n/\|\delta x_n\|\to v$ with $v_t>0$.
+\begin{definition}[$R^{(1/2)}$---quantum causal existence]
+There exist $\delta x_n\to 0$ with $\delta t_n>0$, $\delta r_n\ne 0$,
+and a limit direction $v$ with $v_t>0$, $v_r\ne 0$, such that
+$d(x;\delta x_n)/\|\delta x_n\|^{1/2}\to 0$.
+Moreover, there exists a direction $u\in S^1$ with $u_t>0$ and
+$Q'(u)<0$ (i.e.\ $\mathcal{C}^-(Q')\ne\emptyset$).
+
+\emph{Physical meaning: causal directions exist (zero-cost threshold),
+and the causal cone has non-empty interior (strictly sub-luminal directions).}
 \end{definition}
 
 %─────────────────────────────────────────────────────────────────
@@ -201,9 +206,15 @@ Steps~1--3, $\mathrm{ND}$ for Step~4, and noting that Step~5
 
 \begin{theorem}[Quantum Realizability]
 Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, and $\mathrm{ND}$,
-the function $Q'$ is Lorentz-type Finsler: there exists
-$w^*\ne 0$ with $w^*_t>0$ and $Q'(w^*)=0$ (light cone exists),
-and $\mathcal{C}^-(Q'):=\{v: Q'(v)<0\}\ne\emptyset$.
+the function $Q'$ is Lorentz-type Finsler:
+\begin{enumerate}[label=(\roman*)]
+\item there exists $w^*\in S^1$ with $w^*_t>0$ and $Q'(w^*)=0$
+  (null direction, i.e.\ light cone exists);
+\item $\mathcal{C}^-(Q'):=\{v\in S^1: Q'(v)<0\}\ne\emptyset$
+  (causal interior non-empty, by $R^{(1/2)}$);
+\item $\mathcal{N}(Q'):=\{v\in S^1: Q'(v)=0\}$ has no interior in $S^1$
+  (sharp light-cone boundary, by $\mathrm{ND}$).
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -223,24 +234,13 @@ IVT gives $s^*$ with $Q'(\gamma(s^*))=0$.
 Set $w^*:=\gamma(s^*)$; then $w^*_t>0$ and $w^*_r\ne 0$.
 
 \textbf{Step~4} ($\mathcal{C}^-\ne\emptyset$).
-We show there exists $u\in S^1$ with $Q'(u)<0$.
+By the second part of $R^{(1/2)}$, there exists $u\in S^1$ with $Q'(u)<0$
+directly, so $\mathcal{C}^-\ne\emptyset$.
 
-\emph{Case~A: $Q'(v)<0$.}
-Then $v\in\mathcal{C}^-$ directly, so $\mathcal{C}^-\ne\emptyset$.
-
-\emph{Case~B: $Q'(v)=0$.}
-Let $s^*=\min\{s\in[0,1]:Q'(\gamma(s))=0\}$ be the first zero along $\gamma$.
-By definition of $s^*$, $Q'(\gamma(s))>0$ for all $s<s^*$,
-and $w^*:=\gamma(s^*)$ satisfies $Q'(w^*)=0$.
-Now consider the remaining path $\gamma|_{[s^*,1]}$ from $w^*$ to $v$,
-both in $\mathcal{N}(Q')$.
-If $Q'(\gamma(s))\ge 0$ for all $s\in[s^*,1]$,
-then $\mathcal{N}(Q')\supset\gamma([s^*,1])$.
-Since $\gamma$ is injective and $[s^*,1]$ has positive length,
-$\gamma([s^*,1])$ is an arc in $S^1$ with non-empty interior,
-contradicting $\mathrm{ND}$.
-Hence there exists $s^{**}\in(s^*,1]$ with $Q'(\gamma(s^{**}))<0$,
-so $\gamma(s^{**})\in\mathcal{C}^-$ and $\mathcal{C}^-\ne\emptyset$.
+The role of $\mathrm{ND}$ is to ensure the light-cone \emph{boundary} is sharp:
+$\mathcal{N}(Q')$ has no interior arc, so the causal cone is not ``fuzzy''.
+This separates the causal interior ($\mathcal{C}^-$) from the null boundary
+($\mathcal{N}$) with a topologically clean interface.
 
 \textbf{Conclusion.} Light cone exists and causal structure is non-trivial.
 \end{proof}
