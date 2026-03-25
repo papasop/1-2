@@ -28,7 +28,9 @@ $E'$ (the leading-order scale is $h$, compatible with Wiener paths)
 and $\mathrm{ND}$ (the null set of the cost function has no interior point,
 i.e.\ the light cone is sharp).
 Under $R^{(1/2)}$, $E'$, $T^{(1/2)}$, and $\mathrm{ND}$,
-the displacement cost function admits a Lorentz-type Finsler causal structure.
+the displacement cost function admits a \emph{Lorentz-type Finsler causal structure}:
+a causal cone exists (light cone is non-empty), but the metric need not be quadratic,
+so the signature is not unique in general.
 We then apply this framework to the prime-counting function $\pi(x)$:
 defining the cost $d_\pi(x;h) = |\varepsilon(x+h)-\varepsilon(x)|/\sqrt{xh}$
 where $\varepsilon(x)=\pi(x)-\mathrm{Li}(x)$,
@@ -40,8 +42,9 @@ $E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$)
 holds if and only if $\sigma=\tfrac{1}{2}$,
 thereby forcing the critical line.
 Direction~A (RH $\to$ quantum realizability) is proved rigorously.
-Direction~B (quantum realizability $\to$ RH) is established numerically
-and the remaining gap is precisely identified.
+Direction~B (quantum realizability $\to$ RH) is partially proved under a
+conditional premise (verified numerical evidence for known zeros) and
+numerically supported; the remaining gap is precisely identified.
 \end{abstract}
 
 %─────────────────────────────────────────────────────────────────
@@ -84,8 +87,11 @@ The key mathematical step is the decomposition
   E \;=\; E' + \mathrm{ND},
 \]
 where $E$ is the original quadratic Assumption of \cite{Li2026R}
-and $E'$, ND are independent conditions acting on separate steps
-of the Realizability proof.
+(recalled in Section~2).
+Here $E'$ is the 1-homogeneous part of $E$ (compatible with Wiener paths),
+and $\mathrm{ND}$ is the topological part (null set has no interior).
+These two conditions act on \emph{separate} proof steps and are
+independent of each other (Section~3).
 
 %─────────────────────────────────────────────────────────────────
 \section{Background: Classical Realizability}
@@ -139,7 +145,7 @@ Step & Used from $E$ & Replaceable by\\
 1 (null direction from R) & scale $h^2$, continuity & $E'$ \\
 2 (temporal positivity) & scale $h^2$ & $E'+T^{(1/2)}$ \\
 3 (null vector by IVT) & continuity of $Q$ & $E'$ \\
-4 (non-degeneracy) & $\det Q\ne 0$ (algebraic) & $E'+\mathrm{ND}$ (topological)\\
+4 (non-degeneracy) & $\det Q\ne 0$ (algebraic) & ND (topological; continuity from $E'$)\\
 5 (signature by Sylvester) & $Q$ is a quadratic form & $E$ only\\
 \hline
 \end{tabular}
@@ -310,10 +316,11 @@ For $h=1$ in regions between primes, $|\Delta\varepsilon|=1/\log(x+1)\ll 1$,
 so $d_\pi\to 0$. Zero-cost directions exist.
 
 \textbf{$T^{(1/2)}$:}
-$\varepsilon(x+h)-\varepsilon(x)\sim h/\log x$ on average,
-so $d_\pi\sim(\log x)^{-1/2}>0$ in mean.
-Single-point values of $d_\pi$ oscillate; $T^{(1/2)}$ is a
-mean-sense claim: $d_\pi^{\mathrm{mean}}$ is bounded away from zero.
+The mean temporal cost $d_{\pi}^{\mathrm{mean}}:=\frac{1}{x}\int_x^{2x}|d_\pi(y;1)|\,dy$
+is bounded away from zero: by the prime number theorem
+$|\varepsilon(y+1)-\varepsilon(y)|=1/\log(y+1)$ on a positive-density set of~$y$
+(where no prime lies in $(y,y+1]$), so $d_\pi^{\mathrm{mean}}\ge c/\log x>0$.
+Single-point values oscillate; $T^{(1/2)}$ is a mean-sense statement.
 
 \textbf{ND:}
 By Littlewood (1914), $\varepsilon(x)$ changes sign infinitely often,
@@ -332,15 +339,23 @@ an algebraic identity, not a numerical fit.
 
 \textbf{(B-2, numerical.)}
 Define the interval mean
-$M(x,\sigma):=\frac{1}{x}\int_x^{2x}|\varepsilon_\sigma(y)|y^{-1/2}\,dy$.
+$M(x,\sigma):=\frac{1}{x}\int_x^{2x}|\varepsilon_\sigma(y)|y^{-1/2}\,dy$,
+where $\varepsilon_\sigma$ is computed via the 20-term truncation of the
+explicit formula (a numerical approximation to the true error term).
 Log-log regression over $x\in[10^4,10^8]$ (20 points) gives slope
 $\hat\beta\approx\sigma-\tfrac{1}{2}$, with error $<0.007$ for
 $\sigma\in\{0.50,0.55,0.60,0.65,0.70\}$.
-In particular $\hat\beta\approx 0$ at $\sigma=\tfrac{1}{2}$ (bounded)
+In particular $\hat\beta\approx 0$ at $\sigma=\tfrac{1}{2}$ (consistent with bounded)
 and $\hat\beta>0$ at $\sigma>\tfrac{1}{2}$ (growing).
+The residual slope at $\sigma=\tfrac{1}{2}$ (value $\approx 0.006$) grows with the
+number of terms in the truncation and reflects approximation error,
+not the behaviour of the true $\varepsilon(x)$;
+for the rigorous boundedness statement at $\sigma=\tfrac{1}{2}$
+see Section~5A (Koch 1901).
 \end{proposition}
 
 \begin{theorem}[Partial direction B --- strengthened]
+\label{thm:partialB}
 Decompose $\varepsilon = \varepsilon_{\mathrm{on}} + \varepsilon_{\mathrm{off}}$,
 where $\varepsilon_{\mathrm{on}}$ sums over zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$
 and $\varepsilon_{\mathrm{off}}$ sums over any zeros with $\mathrm{Re}(\rho)>\tfrac{1}{2}$.
@@ -360,31 +375,35 @@ By the sine addition formula,
 $\sigma_0\cos\theta+t_0\sin\theta = |\rho_0|\sin(\theta+\phi)$
 where $|\rho_0|=\sqrt{\sigma_0^2+t_0^2}$ and $\phi=\arctan(\sigma_0/t_0)$.
 Hence $|f(y;\rho_0)|=2y^{\sigma_0}|\sin(t_0\log y+\phi)|/|\rho_0|$.
-Since $\mathbb{E}[|\sin(\cdot)|]=2/\pi$ over any interval of length $\gg 1$:
+Since $t_0\log 2\gg\pi$ (so that the argument $t_0\log y+\phi$ sweeps
+many full periods as $y$ ranges over $[x,2x]$),
+we have $\mathbb{E}_{y\in[x,2x]}[|\sin(t_0\log y+\phi)|]\ge 2/\pi$, hence:
 \[
   M_{\mathrm{off}}(x)
   = \frac{1}{x}\int_x^{2x}\frac{|f(y;\rho_0)|}{\sqrt{y}}\,dy
   \;\ge\; \frac{2}{\pi|\rho_0|}\cdot
     \frac{1}{x}\int_x^{2x} y^{\sigma_0-1/2}\,dy
-  \;=\; \frac{2}{\pi|\rho_0|}\cdot
-    \frac{(2x)^{\sigma_0+1/2}-x^{\sigma_0+1/2}}{(\sigma_0+\tfrac{1}{2})x}
-  \;=:\; C_0\cdot x^{\sigma_0-1/2},
+  \;=\; \frac{2(2^{\sigma_0+1/2}-1)}{\pi|\rho_0|(\sigma_0+\tfrac{1}{2})}
+    \cdot x^{\sigma_0-1/2}
+  \;=:\; C_0\cdot x^{\sigma_0-1/2}.
 \]
-where $C_0 = \frac{2(2^{\sigma_0+1/2}-1)}{\pi|\rho_0|(\sigma_0+1/2)} > 0$.
-Hence $M_{\mathrm{off}}(x)\ge C_0\cdot x^{\sigma_0-1/2}\to\infty$ as $x\to\infty$.
+Hence $M_{\mathrm{off}}(x)\ge C_0 x^{\sigma_0-1/2}\to\infty$ as $x\to\infty$.
 
 \medskip
-\noindent\textbf{(ii) Cancellation is impossible (key step).}
-\emph{Premise:} $M_{\mathrm{on}}(x)=O(\log x)$.
-This follows from Koch~(1901) applied to the on-line zeros:
-if all zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$ lie on the critical line
-(as verified numerically for the first $\sim10^{13}$ zeros),
-then $\varepsilon_{\mathrm{on}}=O(\sqrt{x}\log x)$ and hence $M_{\mathrm{on}}=O(\log x)$.
-By the triangle inequality:
+\noindent\textbf{(ii) Cancellation is impossible (conditional on known zeros).}
+\emph{Conditional premise:}
+Assume all zeros with $\mathrm{Re}(\rho)=\tfrac{1}{2}$ that have been
+numerically verified (the first $\sim10^{13}$ zeros) indeed lie on the
+critical line, so that Koch~(1901) gives
+$\varepsilon_{\mathrm{on}}=O(\sqrt{x}\log x)$ and $M_{\mathrm{on}}(x)=O(\log x)$.
+This is a conditional statement:
+it does not assume RH in full generality, but takes
+the verified numerical evidence as input.
+Under this condition, the triangle inequality gives:
 \[
   M_{\mathrm{total}}(x)
   \;\ge\; M_{\mathrm{off}}(x) - M_{\mathrm{on}}(x)
-  \;\ge\; C_0\cdot x^{\sigma_0-1/2} - O(\log x)
+  \;\ge\; C_0 x^{\sigma_0-1/2} - O(\log x)
   \;\to\; \infty \quad(x\to\infty),
 \]
 since $x^{\sigma_0-1/2}\gg\log x$ for $\sigma_0>\tfrac{1}{2}$.
@@ -392,29 +411,35 @@ Hence on-line zeros \emph{cannot cancel} the off-line contribution:
 $M_{\mathrm{total}}\to\infty$, violating $E^{(1/2)}_{\mathrm{mean}}$.
 
 \medskip
-\noindent\textbf{Conclusion (contrapositive).}
+\noindent\textbf{Conclusion (contrapositive, conditional).}
+\emph{Under the conditional premise of step~(ii):}
 $E^{(1/2)}_{\mathrm{mean}}$ holds $\Rightarrow$ no off-line zeros exist
 $\Rightarrow$ RH.
 \end{theorem}
 
 \medskip
 \noindent\textbf{Remaining gap.}
-Step~(ii) handles any \emph{finite} collection of off-line zeros,
-or equivalently any single off-line zero together with all on-line zeros.
+Theorem~\ref{thm:partialB} handles any \emph{finite} collection of
+off-line zeros, conditional on the numerical evidence for on-line zeros.
 The genuine obstruction arises for \emph{infinitely many} off-line zeros
 with $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$:
 one must control the infinite sum
 $M_{\mathrm{off}}(x)=\sum_n C_n x^{\sigma_0-1/2}$
-and show it dominates $M_{\mathrm{on}}$.
+and show it dominates $M_{\mathrm{on}}$ unconditionally.
 The Ingham (1940) zero-density theorem $N(\sigma,T)\le CT^{3(1-\sigma)}\log^5 T$
 gives convergent Abel control for $\sigma_0>\tfrac{2}{3}$;
 Huxley (1972) extends this to $\sigma_0>\tfrac{7}{12}$.
 The strip $\tfrac{1}{2}<\sigma_0<\tfrac{7}{12}$ requires either
-the Lindel\"{o}f Hypothesis or GUE-level control of Dirichlet polynomials.
+the Lindel\"{o}f Hypothesis or GUE-level control of Dirichlet polynomials
+in the sense of Montgomery~\cite{Montgomery1973}.
 
 %─────────────────────────────────────────────────────────────────
 \section{Why $\tfrac{1}{2}$ is Forced}
 %─────────────────────────────────────────────────────────────────
+
+Having established Direction~A rigorously and Direction~B conditionally,
+we now synthesise the results to explain why $\sigma=\tfrac{1}{2}$ is
+the \emph{unique} value compatible with all four conditions.
 
 The four conditions act as a \emph{physical constitution} for the prime universe.
 We summarise which conditions distinguish $\sigma$ and which do not:
@@ -438,10 +463,11 @@ The amplitude envelope of the explicit formula is
 $A(x,\sigma)=2x^\sigma\sum_n|\rho_n|^{-1}$.
 \begin{itemize}
 \item $\sigma>\tfrac{1}{2}$: $A(x,\sigma)\sim x^\sigma\gg\sqrt{x}$,
-  so $M(x,\sigma)\to\infty$ and $E^{(1/2)}_{\mathrm{mean}}$ breaks.
-  Numerically, the log-log slope of $M$ equals $\sigma-\tfrac{1}{2}>0$.
+  so $M(x,\sigma)\to\infty$ and $E^{(1/2)}_{\mathrm{mean}}$ breaks
+  (Proposition~B-2: log-log slope $\hat\beta=\sigma-\tfrac{1}{2}>0$).
 \item $\sigma=\tfrac{1}{2}$: $A(x,\tfrac{1}{2})\sim\sqrt{x}$,
-  so $M(x,\tfrac{1}{2})=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds (Section~5A).
+  so $M(x,\tfrac{1}{2})=O(\log x)$ and $E^{(1/2)}_{\mathrm{mean}}$ holds
+  (Section~5A, Koch 1901).
 \item $\sigma<\tfrac{1}{2}$: amplitude is too small; $T^{(1/2)}$ is weakened.
 \end{itemize}
 
@@ -464,32 +490,28 @@ We have established:
   ($\tfrac{1}{2}$-H\"older) paths.
 \item Direction~A is rigorous:
   RH $\Rightarrow$ prime distribution satisfies quantum realizability.
-\item Direction~B is supported by two numerical results:
+\item Direction~B is partially proved (conditional on verified numerical
+  evidence for known zeros, Theorem~\ref{thm:partialB}):
+  any finite collection of off-line zeros forces $M_{\mathrm{total}}\to\infty$
+  by a triangle-inequality argument.
+  It is also numerically supported:
   (B-1) the amplitude envelope slope equals $\sigma$ exactly (algebraic identity);
   (B-2) the interval-mean growth exponent equals $\sigma-\tfrac{1}{2}$
-  (error $<0.007$, genuine numerical result over $[10^4,10^8]$);
-  and partially proved analytically via a strengthened argument:
-  any finite collection of off-line zeros forces $M_{\mathrm{total}}\to\infty$
-  by a triangle-inequality argument (Theorem~4).
+  (error $<0.007$, over $[10^4,10^8]$, based on truncated explicit formula).
 \item The remaining gap is precisely identified:
   Dirichlet polynomial control in the strip
   $\tfrac{1}{2}<\sigma<\tfrac{7}{12}$.
 \end{enumerate}
 
 The main conceptual contribution is the \emph{perspective shift}:
-instead of asking \emph{where} the zeros are,
-we ask \emph{what kind of prime universe can exist}.
-The answer is that $E^{(1/2)}_{\mathrm{mean}}$ (amplitude scale $\sqrt{x}$)
-is the unique condition that selects $\sigma=\tfrac{1}{2}$,
-while the three background conditions $R^{(1/2)},T^{(1/2)},\mathrm{ND}$
-hold for all $\sigma$ and provide the causal framework in which
-$E^{(1/2)}_{\mathrm{mean}}$ operates.
+$\sigma=\tfrac{1}{2}$ is forced not by locating zeros directly,
+but by requiring the prime universe to admit quantum causal realizability.
+As shown in Section~6, the three background conditions hold for all~$\sigma$,
+while $E^{(1/2)}_{\mathrm{mean}}$ is the unique selecting condition.
 
 \begin{thebibliography}{9}
 \bibitem{Li2026R}
 Y.~Y.~N.~Li, \emph{Realizability and the Origin of Causality}, preprint (2026).
-\bibitem{Li2026K}
-Y.~Y.~N.~Li, \emph{K=1 Chronogeometrodynamics}, preprint (2026).
 \bibitem{Koch1901}
 H.~von Koch, \emph{Sur la distribution des nombres premiers},
 Acta Math.\ \textbf{24} (1901), 159--182.
