@@ -294,10 +294,11 @@ def direction_B_realizability_implies_RH():
         ok  = err < 0.015
         verd = "bounded ✓" if sigma == 0.50 else "growing ❌"
         print(f"  {sigma:.2f}  {slope:>10.4f}  {theory:>14.4f}  {err:>8.4f}  {verd:>10}")
-    print(f"\n  sigma=0.5: slope = 0.006 ≈ 0 (bounded) => E^{{1/2}}_mean holds.")
-    print(f"  sigma>0.5: slope ≈ sigma-0.5 > 0 (growing) => E^{{1/2}}_mean broken.")
-    print(f"  Note: sigma=0.5 residual slope (0.006) is truncation noise from")
-    print(f"  20-term approximation (theory = 0). Signal/noise ratio: 9-30x.\n")
+    print(f"\n  sigma>0.5: slope ≈ sigma-0.5 > 0 (growing) => E^{{1/2}}_mean broken ✓")
+    print(f"  sigma=0.5: slope = 0.006 (small, consistent with bounded)")
+    print(f"  Caveat: eps_explicit uses 20-term truncation; true eps differs.")
+    print(f"  The sigma=0.5 residual slope grows with n_terms (systematic, not noise).")
+    print(f"  For sigma=0.5 boundedness, see Section 2 (true eps, rigorous). ✓\n")
 
     # Zero-density gap
     print("Zero-density theorem coverage:")
@@ -363,4 +364,3 @@ if __name__ == "__main__":
     print("Numerical (Sec 5B):       B-2 slope = sigma-0.5 (error < 0.015).")
     print("Open gap: 1/2 < sigma < 7/12 — Dirichlet polynomial control.")
     print("=" * 58)
-
