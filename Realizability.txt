@@ -344,7 +344,7 @@ conditions simultaneously.\qed
 Condition & Amplitude behaviour & Role & Holds for all $\sigma$?\\
 \hline
 $R^{(1/2)}$ & Prime gaps give $d_\pi\to 0$ & Background & Yes\\
-$T^{(1/2)}$ & Prime density gives $d_\pi>0$ in mean & Background & Yes\\
+$T^{(1/2)}$ & Explicit-formula amplitude non-zero (Remark) & Background & Yes\\
 ND & Littlewood sign changes & Background & Yes\\
 $E^{(1/2)}_{\mathrm{mean}}$ & $|\varepsilon|\sim x^\sigma/\log x$; need $\sigma=\tfrac{1}{2}$ & \textbf{Selecting} & \textbf{No}\\
 \hline
